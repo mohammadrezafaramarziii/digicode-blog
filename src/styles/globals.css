@@ -1,0 +1,210 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    &,
+    &.light-mode {
+      --background-app-rgb: 255, 255, 255;
+      --color-primary-900: 68, 75, 255;
+      --color-primary-800: 244, 245, 247;
+      --color-white: 255, 255, 255;
+
+      --color-secondary-900: 17, 17, 17;
+      --color-secondary-800: 102, 102, 102;
+      --color-secondary-700: 102, 112, 133;
+
+      --color-pink: 103, 179, 195;
+      --color-deep-red: 184, 99, 132;
+      --color-success: 0, 192, 115;
+      --color-warning: 255, 153, 0;
+      --color-error: 255, 71, 87;
+    }
+    &.dark-mode {
+      --background-app-rgb: 14, 35, 56;
+
+      --color-primary-800: 0, 30, 61;
+
+      --color-secondary-900: 255, 255, 255;
+      --color-secondary-800: 200, 200, 200;
+      --color-secondary-700: 180, 190, 200;
+    }
+  }
+}
+
+@layer components {
+  .btn {
+    @apply px-5 py-2 gap-1 text-sm rounded transition-all duration-300 disabled:shadow-none;
+  }
+  .btn--primary {
+    @apply bg-primary-900 text-white font-medium;
+  }
+  /* .btn--secondary {
+    @apply 
+  }
+  .btn--outline {
+    @apply border 
+  } */
+  .btn--danger {
+    @apply border border-rose-700 text-rose-700;
+  }
+
+  .badge{
+    @apply py-1.5 px-2 rounded-md inline-block w-auto
+  }
+  .badge--primary{
+    @apply bg-primary-900/10 text-primary-900 text-sm font-medium
+  }
+  .badge--deep-red{
+    @apply bg-deepRed/10 text-deepRed text-sm font-medium
+  }
+  .badge--warning{
+    @apply bg-warning/10 text-warning text-sm font-medium
+  }
+  .badge--success{
+    @apply bg-success/10 text-success text-sm font-medium
+  }
+}
+
+* {
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+  /* border: none; */
+  outline: none;
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: var(--font-yekan-bakh);
+  min-height: 100vh;
+  user-select: none;
+  background-color: rgb(var(--background-app-rgb));
+}
+
+/* inupt number */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  /* display: none; <- Crashes Chrome on hover */
+  -webkit-appearance: none;
+  margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+
+input[type="number"] {
+  -moz-appearance: textfield; /* Firefox */
+}
+
+/* TABLE */
+
+/* table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+}
+
+table .title-row {
+  background-color: rgb(var(--color-secondary-100));
+}
+
+table td,
+table th {
+  border-bottom: 1px solid rgb(var(--color-secondary-200));
+  text-align: right;
+  white-space: nowrap;
+}
+
+table th {
+  padding: 0.6rem 1rem;
+  color: rgb(var(--color-secondary-600));
+  font-size: 0.9rem;
+}
+a {
+  display: block;
+}
+table td {
+  font-size: 0.85rem;
+  padding: 1rem 1rem;
+  color: rgb(var(--color-secondary-600));
+} */
+
+
+/* for loading */
+.dots {
+  width: var(--size);
+  height: var(--size);
+  position: relative;
+}
+
+.dot {
+  width: var(--size);
+  height: var(--size);
+  animation: dwl-dot-spin calc(var(--speed) * 5) infinite linear both;
+  animation-delay: calc(var(--i) * var(--speed) / (var(--dot-count) + 2) * -1);
+  rotate: calc(var(--i) * var(--spread) / (var(--dot-count) - 1));
+  position: absolute;
+}
+
+.dot::before {
+  content: "";
+  display: block;
+  width: var(--dot-size);
+  height: var(--dot-size);
+  background-color: rgb(var(--color-primary-900));
+  border-radius: 50%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  bottom: 0;
+  left: 50%;
+}
+
+@keyframes dwl-dot-spin {
+  0% {
+    transform: rotate(0deg);
+    animation-timing-function: cubic-bezier(0.390, 0.575, 0.565, 1.000);
+    opacity: 1;
+  }
+
+  2% {
+    transform: rotate(20deg);
+    animation-timing-function: linear;
+    opacity: 1;
+  }
+
+  30% {
+    transform: rotate(180deg);
+    animation-timing-function: cubic-bezier(0.445, 0.050, 0.550, 0.950);
+    opacity: 1;
+  }
+
+  41% {
+    transform: rotate(380deg);
+    animation-timing-function: linear;
+    opacity: 1;
+  }
+
+  69% {
+    transform: rotate(520deg);
+    animation-timing-function: cubic-bezier(0.445, 0.050, 0.550, 0.950);
+    opacity: 1;
+  }
+
+  76% {
+    opacity: 1;
+  }
+
+  76.1% {
+    opacity: 0;
+  }
+
+  80% {
+    transform: rotate(720deg);
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
