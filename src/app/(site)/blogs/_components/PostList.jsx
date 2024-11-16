@@ -3,13 +3,11 @@ import CoverImage from "./CoverImage";
 import Link from "next/link";
 import Avatar from "@/ui/Avatar";
 import PostInteraction from "./PostInteraction";
+import { getPosts } from "@/services/postServices";
+import setCookieOnReq from "@/utils/setCookieOnReq";
+import { cookies } from "next/headers";
 
-async function PostList() {
-    await new Promise((res) => setTimeout(() => res(), 5000));
-    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/post/list`);
-    const { data: { posts } } = await res.json();
-    console.log(posts);
-
+async function PostList({ posts }) {
     return (
         <div className="w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 xl:grid-cols-3 gap-6">
             {posts.map((post) => (

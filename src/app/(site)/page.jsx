@@ -1,7 +1,10 @@
+import { getCategories } from "@/services/categoryService";
 import Button from "@/ui/Button";
 import Link from "next/link";
 
-export default function Home() {
+export default async function Home() {
+  const categories = await getCategories();
+
   return (
     <div className="w-full my-20 text-center">
       <div>
@@ -15,24 +18,13 @@ export default function Home() {
 
       <div className="hidden w-auto md:flex justify-center mt-8">
         <ul className="text-sm text-secondary-900 flex items-center gap p-2 bg-white border border-secondary-900/10 rounded-md">
-          <li className="px-3.5">
-            بک اند
-          </li>
-          <li className="px-3.5">
-            فرانت اند
-          </li>
-          <li className="px-3.5">
-            هوش مصنوعی
-          </li>
-          <li className="px-3.5">
-            ماشین لرنینگ
-          </li>
-          <li className="px-3.5">
-            موبایل
-          </li>
-          <li className="px-3.5">
-            بازی سازی
-          </li>
+          {categories.map((category) => (
+            <li className="px-3.5" key={category._id}>
+              <Link href={`/blogs/category/${category.slug}`}>
+                {category.title}
+              </Link>
+            </li>
+          ))}
           <Link href={'/blogs'} className="btn btn--primary">
             مشاهده همه
           </Link>

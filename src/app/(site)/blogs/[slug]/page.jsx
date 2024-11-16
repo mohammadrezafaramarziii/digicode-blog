@@ -1,4 +1,4 @@
-import { getPostBySlug } from "@/services/postServices";
+import { getPostBySlug, getPosts } from "@/services/postServices";
 import ButtonIcon from "@/ui/ButtonIcon";
 import { BookmarkLinearIcon, ChatDotsOutlineIcon, ClockCircleOutlineIcon, HeartLinearIcon, StarBoldIcon } from "@/ui/Icons";
 import Image from "next/image";
@@ -7,9 +7,13 @@ import { notFound } from "next/navigation";
 import Share from "./_components/Share";
 import moment from "moment";
 import 'moment/locale/fa';
+import RelatedPost from "../_components/RelatedPost";
+import SinglePostIntraction from "./_components/SinglePostIntraction";
+import { cookies } from "next/headers";
+import setCookieOnReq from "@/utils/setCookieOnReq";
 
 export async function generateMetadata({ params }) {
-    const post = await getPostBySlug(params.postSlug);
+    const post = await getPostBySlug(params.slug);
 
     if (!post) return notFound();
 
@@ -18,10 +22,16 @@ export async function generateMetadata({ params }) {
     }
 }
 
+export async function generateStaticParams() {
+    const posts = await getPosts();
+    return posts.map((post) => ({ slug: post.slug }));
+}
+
 async function SinglePost({ params }) {
-    const post = await getPostBySlug(params.postSlug);
+    const cookieStore = await cookies();
+    const options = setCookieOnReq(cookieStore);
+    const post = await getPostBySlug(params.slug, options);
     moment.locale("fa");
-    console.log(post);
 
     if (!post) return notFound();
 
@@ -93,32 +103,16 @@ async function SinglePost({ params }) {
                                 </div>
                             </div>
                             <div className="w-full flex items-center justify-between  pt-4">
-                                <div className="flex items-center gap-2 justify-end">
-                                    <ButtonIcon variant="yellow" className={'!bg-transparent !gap-2 !text-base'} noHover={true}>
-                                        <ChatDotsOutlineIcon className="!w-6 !h-6" />
-                                        <span>
-                                            {post.commentsCount}
-                                        </span>
-                                    </ButtonIcon>
-                                    <ButtonIcon variant="red" className={'!bg-transparent !gap-2 !text-base'} noHover={true}>
-                                        <HeartLinearIcon className="!w-6 !h-6" />
-                                        <span>
-                                            {post.likesCount}
-                                        </span>
-                                    </ButtonIcon>
-                                    <ButtonIcon className={'!bg-transparent !gap-2 !text-base'} noHover={true}>
-                                        <BookmarkLinearIcon className="!w-6 !h-6" />
-                                    </ButtonIcon>
-                                </div>
-                                <div>
-                                    <Share post={post}/>
-                                </div>
+                                <SinglePostIntraction post={post} />
+                                <Share post={post} />
                             </div>
                         </div>
 
                     </div>
                 </div>
+
                 <div className="col-span-12 lg:col-span-7">
+                    {post.related.length > 0 && <RelatedPost posts={post.related} />}
                 </div>
             </div>
         </section>

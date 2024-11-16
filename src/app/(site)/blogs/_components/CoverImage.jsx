@@ -9,6 +9,7 @@ export default function CoverImage({ title, coverImageUrl }) {
                 // width={400}
                 // height={400}
                 fill
+                priority
                 className="w-full h-full object-cover object-center hover:scale-110 duration-200 ease-in-out"
             />
         </div>

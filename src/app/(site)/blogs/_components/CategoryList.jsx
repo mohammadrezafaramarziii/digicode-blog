@@ -1,10 +1,9 @@
+import { getCategories } from "@/services/categoryService";
 import { CategoryBoldDuotoneIcon } from "@/ui/Icons";
 import Link from "next/link";
 
 async function CategoryList() {
-    await new Promise((res) => setTimeout(() => res(), 3000));
-    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/category/list`);
-    const { data: { categories } } = await res.json();
+    const categories = await getCategories();
 
     return (
         <div className="w-full bg-primary-800 p-6 rounded-xl">
@@ -23,7 +22,7 @@ async function CategoryList() {
                     </li>
                     {categories.map((category) => (
                         <li key={category._id} className="badge badge--primary">
-                            <Link href={`/blogs/${category.slug}`}>
+                            <Link href={`/blogs/category/${category.slug}`}>
                                 {category.title}
                             </Link>
                         </li>

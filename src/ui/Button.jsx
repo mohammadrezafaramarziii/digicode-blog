@@ -5,9 +5,9 @@ const btnType = {
     danger: "btn--danger",
 }
 
-export default function Button({ children, varint = "primary", onClick, ...rest }) {
+export default function Button({ children, varint = "primary", onClick, className, type = "button", ...rest }) {
     return (
-        <button onClick={onClick} className={`btn ${btnType[varint]}`} {...rest}>
+        <button type={type} onClick={onClick} className={`btn ${btnType[varint]} ${className}`} {...rest}>
             {children}
         </button>
     )

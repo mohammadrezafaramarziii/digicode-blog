@@ -26,6 +26,7 @@ module.exports = {
           800: withOpacity("--color-secondary-800"),
           700: withOpacity("--color-secondary-700"),
         },
+        background: withOpacity("--background-app-rgb"),
         success: withOpacity("--color-success"),
         warning: withOpacity("--color-warning"),
         error: withOpacity("--color-error"),

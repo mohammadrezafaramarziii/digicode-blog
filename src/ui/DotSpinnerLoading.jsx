@@ -1,6 +1,6 @@
-export function ScreenLoading() {
+export function ScreenLoading({message}) {
     return (
-        <div className="w-full h-full flex items-center justify-center bg-primary-800/20 backdrop-blur-sm fixed top-0 right-0 z-50">
+        <div className="w-full h-full flex flex-col gap-6 items-center justify-center bg-primary-800/20 backdrop-blur-sm fixed top-0 right-0 z-50">
             <div
                 style={{
                     "--size": "64px",
@@ -17,6 +17,10 @@ export function ScreenLoading() {
                 <div style={{ "--i": 3 }} className="dot"></div>
                 <div style={{ "--i": 4 }} className="dot"></div>
                 <div style={{ "--i": 5 }} className="dot"></div>
+            </div>
+            
+            <div className="text-xl font-bold text-secondary-900">
+                {message}
             </div>
         </div>
     )
