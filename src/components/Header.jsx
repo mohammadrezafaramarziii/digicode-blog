@@ -23,9 +23,9 @@ export default function Header() {
                         </Link>
                     </>
                     :
-                    <Button>
+                    <Link href={'/profile'} className="btn btn--primary">
                         پروفایل
-                    </Button>
+                    </Link>
                 }
             </div>
         </div>

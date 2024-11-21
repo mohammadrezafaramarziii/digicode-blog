@@ -3,7 +3,7 @@ import Image from "next/image";
 export default function Avatar({ avatar, name, width = 24 }) {
     return (
         <Image
-            src={avatar || ""}
+            src={avatar || "/images/userDefault.png"}
             alt={name || "تصویر"}
             width={width}
             height={width}

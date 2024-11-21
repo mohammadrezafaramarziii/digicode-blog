@@ -11,9 +11,11 @@ import RelatedPost from "../_components/RelatedPost";
 import SinglePostIntraction from "./_components/SinglePostIntraction";
 import { cookies } from "next/headers";
 import setCookieOnReq from "@/utils/setCookieOnReq";
+import PostComment from "./_components/PostComment";
 
 export async function generateMetadata({ params }) {
-    const post = await getPostBySlug(params.slug);
+    const { slug } = await params;
+    const post = await getPostBySlug(slug);
 
     if (!post) return notFound();
 
@@ -30,15 +32,16 @@ export async function generateStaticParams() {
 async function SinglePost({ params }) {
     const cookieStore = await cookies();
     const options = setCookieOnReq(cookieStore);
-    const post = await getPostBySlug(params.slug, options);
-    moment.locale("fa");
+    const { slug } = await params;
+    const post = await getPostBySlug(slug, options);
+    moment.locale("fa");    
 
     if (!post) return notFound();
 
     return (
         <section className="mt-14 mb-20">
             <div className="w-full grid grid-cols-12 lg:grid-cols-24 gap-6">
-                <div className="col-span-12 lg:col-span-17">
+                <div className="col-span-12 lg:col-span-17 flex flex-col gap-6">
                     <div className="w-full mb-6">
                         <Image src={'/images/babner-singlepost.jpg'} alt="" width={728} height={90} className="w-full rounded-lg" />
                     </div>
@@ -109,7 +112,10 @@ async function SinglePost({ params }) {
                         </div>
 
                     </div>
+
+                    <PostComment post={post} />
                 </div>
+
 
                 <div className="col-span-12 lg:col-span-7">
                     {post.related.length > 0 && <RelatedPost posts={post.related} />}
