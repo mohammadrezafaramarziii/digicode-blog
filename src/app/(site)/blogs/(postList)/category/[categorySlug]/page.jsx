@@ -9,7 +9,7 @@ export default async function CategorySlug({ params, searchParams }) {
     const queries = `${queryString.stringify(await searchParams)}&categorySlug=${categorySlug}`;
     const cookieStore = await cookies();
     const options = setCookieOnReq(cookieStore);
-    const posts = await getPosts(queries, options);
+    const {posts} = await getPosts(queries, options);
 
     return (
         <div>

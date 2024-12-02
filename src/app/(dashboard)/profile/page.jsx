@@ -1,23 +1,27 @@
-import { fetchCardData } from "@/lib/data";
 import Title from "../_components/Title";
-import Card from "../_components/Card";
+import PostsTable from "./posts/_/components/PostsTable";
+import { Suspense } from "react";
+import CardWrapper from "../_components/CardWrapper";
+import CardWrapperSkeleton from "../_components/CardWrapperSkeleton";
+import TitleDot from "../_components/TitleDot";
+import PostTableSkeleton from "./posts/_/components/PostTableSkeleton";
 
 export default async function Dashboard() {
-    const {
-        numberOfComments,
-        numberOfPosts,
-        numberOfUsers,
-    } = await fetchCardData();
 
     return (
         <div>
             <Title title={'داشبورد'} />
+            <Suspense fallback={<CardWrapperSkeleton />}>
+                <CardWrapper />
+            </Suspense>
 
-            <div className="w-full grid grid-cols-2 md:grid-cols-3 gap-8 bg-white p-8 rounded-xl mt-6">
-                <Card title={'کاربران'} value={`${numberOfUsers} کاربر`} type={"users"}/>
-                <Card title={'نظرات'} value={`${numberOfComments} نظر`} type={"comments"}/>
-                <Card title={'پست ها'} value={`${numberOfPosts} پست`} type={"posts"}/>
+
+            <div className="pt-10">
+                <TitleDot title={'آخرین مقالات'} />
             </div>
+            <Suspense fallback={<PostTableSkeleton />}>
+                <PostsTable query="sort=latest&limit=5" />
+            </Suspense>
         </div>
     )
 }

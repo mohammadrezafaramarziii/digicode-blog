@@ -9,7 +9,7 @@ export default function ButtonIcon({ onClick, children, className, variant = "pr
     return (
         <button
             onClick={onClick}
-            className={`${btnType[variant]} ${className} flex items-center p-1.5 duration-150 rounded-lg gap-x-1 text-xs [&>svg]:w-4 [&>svg]:h-4`}
+            className={`${btnType[variant]} ${className} disabled:opacity-30 flex items-center p-1.5 duration-150 rounded-lg gap-x-1 text-xs [&>svg]:w-4 [&>svg]:h-4`}
             {...rest}
         >
             {children}

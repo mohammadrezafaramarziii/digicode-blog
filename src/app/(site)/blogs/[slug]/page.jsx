@@ -25,7 +25,7 @@ export async function generateMetadata({ params }) {
 }
 
 export async function generateStaticParams() {
-    const posts = await getPosts();
+    const {posts} = await getPosts();
     return posts.map((post) => ({ slug: post.slug }));
 }
 
@@ -73,7 +73,7 @@ async function SinglePost({ params }) {
                             </div>
                         </div>
 
-                        <p className="text-sm lg:text-base text-secondary-800 font-medium pb-6">
+                        <p className="text-sm lg:text-base text-secondary-800 font-medium pb-6 whitespace-pre-wrap">
                             {post.text}
                         </p>
 

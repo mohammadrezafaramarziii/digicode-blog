@@ -27,9 +27,9 @@ function TableBody({ children }) {
     )
 }
 
-function TableRow({ children }) {
+function TableRow({ children, className }) {
     return (
-        <tr className="border-b last:border-b-0 border-secondary-900/10 odd:bg-transparent even:bg-deepRed/10">
+        <tr className={`${className} border-b last:border-b-0 border-secondary-900/10 odd:bg-transparent even:bg-deepRed/10`}>
             {children}
         </tr>
     )

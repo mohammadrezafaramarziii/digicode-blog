@@ -1,7 +1,9 @@
+"use client"
 import Table from "@/ui/Table";
 import { toPersianDateLong } from "@/utils/dateFormatter";
 import truncateText from "@/utils/trancateText";
-import { DeleteButton, UpdateButton } from "./Buttons";
+import { DeleteButton, PreviewButton, UpdateButton } from "./Buttons";
+import { useState } from "react";
 
 const typeStyle = {
     free: {
@@ -15,10 +17,11 @@ const typeStyle = {
 }
 
 export default function PostRow({ index, post }) {
-    const { title, category, author, createdAt, type, _id } = post;
+    const { title, category, author, createdAt, type, _id, slug } = post;
+    const [stepDelete, setStepDelete] = useState(0);
 
     return (
-        <Table.Row>
+        <Table.Row className={`${stepDelete >= 1 ? "removed-item-animate" : ""} ${stepDelete >= 2 && "hidden"} duration-200`}>
             <td>{index + 1}</td>
             <td>{truncateText(title, 20)}</td>
             <td>{category.title}</td>
@@ -31,8 +34,9 @@ export default function PostRow({ index, post }) {
             </td>
             <td>
                 <div className="flex items-center gap-2">
+                    <PreviewButton slug={slug} />
                     <UpdateButton id={_id} />
-                    <DeleteButton id={_id} />
+                    <DeleteButton post={post} setStepDelete={(e) => setStepDelete(e)} />
                 </div>
             </td>
         </Table.Row>

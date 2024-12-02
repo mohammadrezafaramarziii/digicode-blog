@@ -3,7 +3,7 @@ import Button from "@/ui/Button";
 import Link from "next/link";
 
 export default async function Home() {
-  const categories = await getCategories();
+  const { categories } = await getCategories();
 
   return (
     <div className="w-full my-20 text-center">

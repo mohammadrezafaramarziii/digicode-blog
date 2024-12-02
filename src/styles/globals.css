@@ -39,13 +39,16 @@
     @apply px-5 py-2 gap-1 text-sm rounded transition-all duration-300 disabled:shadow-none;
   }
   .btn--primary {
-    @apply bg-primary-900 text-white font-medium;
+    @apply bg-primary-900 border border-primary-900 text-white font-medium;
   }
   .btn--danger {
     @apply border border-rose-700 text-rose-700;
   }
-  .btn--secondary{
-    @apply bg-primary-900/10 text-primary-900 font-medium;
+  .btn--danger-primary {
+    @apply bg-rose-700 border border-rose-700 text-primary-800 text-white font-medium;
+  }
+  .btn--secondary {
+    @apply bg-primary-900/10 border border-primary-900/10 text-primary-900 font-medium;
   }
 
   .badge {
@@ -71,12 +74,12 @@
     @apply px-4 h-11 rounded-md bg-primary-800 border border-primary-800 duration-150 outline-none appearance-none focus:border-primary-900;
   }
 
-  table thead tr th{
-    @apply px-6 py-3
+  table thead tr th {
+    @apply px-6 py-3;
   }
 
-  table tbody tr td{
-    @apply px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white
+  table tbody tr td {
+    @apply px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white;
   }
 }
 
@@ -239,4 +242,46 @@ table td {
   position: absolute;
   top: calc(70% - 24px);
   right: -24px;
+}
+
+/* animates */
+.removed-item-animate {
+  animation: removed-item-animation 0.8s cubic-bezier(0.65, -0.02, 0.72, 0.29)
+    forwards;
+}
+
+@keyframes removed-item-animation {
+  0% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  30% {
+    opacity: 1;
+    transform: translateX(50px);
+  }
+
+  80% {
+    opacity: 1;
+    transform: translateX(-800px);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateX(-800px);
+  }
+}
+
+.alert-time-animate__bar {
+  animation: alert-time-animate__bar__animation 13s
+    forwards;
+}
+
+@keyframes alert-time-animate__bar__animation {
+  0% {
+    width: 100%;
+  }
+  100% {
+    width: 0%;
+  }
 }

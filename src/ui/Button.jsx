@@ -3,6 +3,7 @@ const btnType = {
     secondary: "btn--secondary",
     outline: "btn--outline",
     danger: "btn--danger",
+    dangerPrimary: "btn--danger-primary",
 }
 
 export default function Button({ children, varint = "primary", onClick, className, type = "button", ...rest }) {

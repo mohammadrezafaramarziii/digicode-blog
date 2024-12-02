@@ -3,7 +3,7 @@ import { CategoryBoldDuotoneIcon } from "@/ui/Icons";
 import Link from "next/link";
 
 async function CategoryList() {
-    const categories = await getCategories();
+    const { categories } = await getCategories();
 
     return (
         <div className="w-full bg-primary-800 p-6 rounded-xl">

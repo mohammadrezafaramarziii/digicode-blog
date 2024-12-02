@@ -17,11 +17,11 @@ export default function RootLayout({ children }) {
   return (
     <html lang="fa" dir="rtl" className={`${yekanBakhFont.variable} font-sans min-h-screen`}>
       <body className="container xl:max-w-screen-xl">
+        <Toaster
+          position="top-center"
+          reverseOrder={false}
+        />
         <AuthProvider>
-          <Toaster
-            position="top-center"
-            reverseOrder={false}
-          />
           <Header />
           <div>
             {children}

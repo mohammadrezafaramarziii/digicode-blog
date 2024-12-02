@@ -2,7 +2,7 @@
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { SearchLinearIcon } from "./Icons";
 
-export default function Search() {
+export default function Search({ inputClassName, btnClassName }) {
     const searchParams = useSearchParams();
     const router = useRouter();
     const pathname = usePathname();
@@ -13,6 +13,7 @@ export default function Search() {
         const searchValue = search.value;
 
         const newParams = new URLSearchParams(searchParams.toString());
+        newParams.set("page", "1");
 
         if (searchValue) {
             newParams.set("search", searchValue);
@@ -24,8 +25,8 @@ export default function Search() {
     }
 
     return (
-        <form onSubmit={formSubmit} className="w-full lg:flex justify-center hidden">
-            <div className="w-full h-12 md:h-14 p-2 bg-primary-800 flex items-center justify-between rounded-xl">
+        <form onSubmit={formSubmit} className="w-full flex justify-center">
+            <div className={`w-full h-14 p-2 bg-primary-800 flex items-center justify-between rounded-xl ${inputClassName}`}>
                 <input
                     type="text"
                     placeholder="جستجو..."
@@ -33,7 +34,7 @@ export default function Search() {
                     autoComplete="off"
                     className="appearance-none px-2 outline-none border-none flex-1 h-full bg-transparent text-sm text-secondary-900"
                 />
-                <button type="submit" className="h-full w-10 bg-background text-primary-900 rounded-lg flex items-center justify-center">
+                <button type="submit" className={`h-full w-10 bg-background text-primary-900 rounded-lg flex items-center justify-center ${btnClassName}`}>
                     <SearchLinearIcon className={'w-5 h-5'} />
                 </button>
             </div>

@@ -17,9 +17,9 @@ export async function getPosts(qs, options) {
     options
   );
   const { data } = await res.json();
-  const { posts } = data || {};
+  const { posts, totalPages } = data || {};
 
-  return posts;
+  return { posts, totalPages };
 }
 
 export async function likePostApi(postId) {
@@ -28,4 +28,20 @@ export async function likePostApi(postId) {
 
 export async function bookmarkPostApi(postId) {
   return http.post(`/post/bookmark/${postId}`).then(({ data }) => data.data);
+}
+
+export async function createPostApi(data) {
+  return http.post(`/post/create`, data).then(({ data }) => data.data);
+}
+
+export async function updatePostApi({ id, data }) {
+  return http.patch(`/post/update/${id}`, data).then(({ data }) => data.data);
+}
+
+export async function getPostById(id) {
+  return http.get(`/post/${id}`).then(({ data }) => data.data);
+}
+
+export async function deletePostApi(id) {
+  return http.delete(`/post/remove/${id}`).then(({ data }) => data.data);
 }
