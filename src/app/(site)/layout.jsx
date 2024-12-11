@@ -1,6 +1,7 @@
 import Header from "@/components/Header";
 import yekanBakhFont from "@/constants/localFont";
 import { AuthProvider } from "@/context/AuthContext";
+import { SettingsProvider } from "@/context/SettingsContext";
 import "@/styles/globals.css";
 import { Toaster } from "react-hot-toast";
 import "react-loading-skeleton/dist/skeleton.css";
@@ -22,10 +23,12 @@ export default function RootLayout({ children }) {
           reverseOrder={false}
         />
         <AuthProvider>
-          <Header />
-          <div>
-            {children}
-          </div>
+          <SettingsProvider>
+            <Header />
+            <div>
+              {children}
+            </div>
+          </SettingsProvider>
         </AuthProvider>
       </body>
     </html>

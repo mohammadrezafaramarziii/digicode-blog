@@ -4,6 +4,7 @@ import CategoryListLoading from "../_components/CategoryListLoading";
 import Image from "next/image";
 import PostListLoading from "../_components/PostListLoading";
 import Search from "@/ui/Search";
+import CategoryListMobile from "../_components/CategoryListMobile";
 
 export const metadata = {
     title: "بلاگ ها",
@@ -12,8 +13,8 @@ export const metadata = {
 
 function Layout({ children }) {
     return (
-        <div className="w-full grid grid-cols-1  lg:grid-cols-24 gap-6 mt-14 mb-20">
-            <div className="hidden lg:flex lg:col-span-7 xl:col-span-6 flex-col gap-4">
+        <div className="w-full grid grid-cols-1 lg:grid-cols-24 gap-6 mt-14 mb-20 relative items-start">
+            <div className="hidden lg:flex lg:col-span-7 xl:col-span-6 flex-col gap-4 sticky top-6 right-0">
                 <Search />
                 <Suspense fallback={<CategoryListLoading />}>
                     <CategoryList />
@@ -30,6 +31,12 @@ function Layout({ children }) {
                     <h1 className="text-4xl font-black text-primary-900 ">
                         مقالات
                     </h1>
+                </div>
+                <div className="lg:hidden pb-6">
+                    <Search />
+                    <div className="pt-3">
+                        <CategoryListMobile />
+                    </div>
                 </div>
                 <Suspense fallback={<PostListLoading />}>
                     {children}

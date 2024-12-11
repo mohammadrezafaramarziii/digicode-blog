@@ -20,7 +20,7 @@ export default function PostCard({ index, post }) {
     const [stepDelete, setStepDelete] = useState(0);
 
     return (
-        <div className={`w-full bg-white ${stepDelete >= 2 ? "max-h-0 mb-0" : "max-h-[156px] mb-4"} rounded-lg p4 relative transform duration-300 ${stepDelete >= 1 ? "removed-item-animate" : ""}`}>
+        <div className={`w-full bg-background ${stepDelete >= 2 ? "max-h-0 mb-0" : "max-h-[156px] mb-4"} rounded-lg p4 relative transform duration-300 ${stepDelete >= 1 ? "removed-item-animate" : ""}`}>
             <div className="p-4">
                 <div className="flex items-center gap-2">
                     <div>

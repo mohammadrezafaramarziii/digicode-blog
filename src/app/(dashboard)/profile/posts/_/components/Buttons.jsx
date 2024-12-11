@@ -33,15 +33,6 @@ export function DeleteButton({ post: { _id, title }, setStepDelete }) {
 
     const router = useRouter();
 
-    // const deleteHandler = () => {
-    //     deletePost(_id, {
-    //         onSuccess: () => {
-    //             setOpen(false);
-    //             router.push("/profile/posts", { scroll: false });
-    //         }
-    //     })
-    // }
-
     const deleteHandler = () => {
         setOpen(false);
         setOpenAlert(true);
@@ -96,7 +87,7 @@ export function DeleteButton({ post: { _id, title }, setStepDelete }) {
 
             <Modal open={open} onClose={() => setOpen(false)} title={"حذف مقاله"}>
                 <div>
-                    <div className="font-medium py-5">
+                    <div className="font-medium py-5 !text-secondary-900">
                         {`آیا از حذف "${title}" مطمئن هستید؟`}
                     </div>
                     <div className="w-full grid grid-cols-2 gap-4">

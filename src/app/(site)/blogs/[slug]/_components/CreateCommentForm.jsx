@@ -38,7 +38,7 @@ export default function CreateCommentForm({ onClose, postId, parent }) {
             action={async (formData) => {
                 await formAction({ formData, postId, parentId })
             }}
-            className="w-full bg-white rounded-lg p-4 mb-5"
+            className="w-full bg-background rounded-lg p-4 mb-5"
             id="add-comment"
         >
             <div className="flex items-center gap-2 pb-3">

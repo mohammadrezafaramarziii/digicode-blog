@@ -1,8 +1,8 @@
 import Image from "next/image";
 
-export default function CoverImage({ title, coverImageUrl }) {
+export default function CoverImage({ title, coverImageUrl, className }) {
     return (
-        <div className="aspect-w-16 aspect-h-11 rounded-3xl overflow-hidden">
+        <div className={`aspect-w-16 aspect-h-11 rounded-3xl overflow-hidden ${className}`}>
             <Image
                 src={coverImageUrl}
                 alt={title}

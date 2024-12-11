@@ -5,13 +5,13 @@ export default function NavOptions() {
     return (
         <>
             <ButtonIcon variant="none">
-                <HomeSmileOutlineIcon className="!w-5 !h-5" />
+                <HomeSmileOutlineIcon className="!w-5 !h-5 text-secondary-900" />
             </ButtonIcon>
             <ButtonIcon variant="none">
-                <NotificationIcon className="!w-5 !h-5" />
+                <NotificationIcon className="!w-5 !h-5 text-secondary-900" />
             </ButtonIcon>
             <ButtonIcon variant="none">
-                <Logout3LinearIcon className="!w-5 !h-5" />
+                <Logout3LinearIcon className="!w-5 !h-5 text-secondary-900" />
             </ButtonIcon>
         </>
     )

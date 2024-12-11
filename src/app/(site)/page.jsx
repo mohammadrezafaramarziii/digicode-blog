@@ -1,9 +1,13 @@
+import BanerSlider from "@/components/BanerSlider";
+import NewestPosts from "@/components/NewestPosts";
 import { getCategories } from "@/services/categoryService";
+import { getPosts } from "@/services/postServices";
 import Button from "@/ui/Button";
 import Link from "next/link";
 
 export default async function Home() {
   const { categories } = await getCategories();
+  const { posts } = await getPosts();
 
   return (
     <div className="w-full my-20 text-center">
@@ -17,8 +21,8 @@ export default async function Home() {
       </div>
 
       <div className="hidden w-auto md:flex justify-center mt-8">
-        <ul className="text-sm text-secondary-900 flex items-center gap p-2 bg-white border border-secondary-900/10 rounded-md">
-          {categories.map((category) => (
+        <ul className="text-sm text-secondary-900 flex items-center gap p-2 bg-background border border-secondary-900/10 rounded-md">
+          {categories.slice(0,5).map((category) => (
             <li className="px-3.5" key={category._id}>
               <Link href={`/blogs/category/${category.slug}`}>
                 {category.title}
@@ -30,6 +34,9 @@ export default async function Home() {
           </Link>
         </ul>
       </div>
+
+      <BanerSlider posts={posts}/>
+      <NewestPosts posts={posts}/>
     </div>
   )
 }

@@ -23,7 +23,7 @@
       --color-error: 255, 71, 87;
     }
     &.dark-mode {
-      --background-app-rgb: 14, 35, 56;
+      --background-app-rgb: 19, 37, 68;
 
       --color-primary-800: 0, 30, 61;
 
@@ -45,10 +45,10 @@
     @apply border border-rose-700 text-rose-700;
   }
   .btn--danger-primary {
-    @apply bg-rose-700 border border-rose-700 text-primary-800 text-white font-medium;
+    @apply bg-rose-700 border border-rose-700 text-white font-medium;
   }
   .btn--secondary {
-    @apply bg-primary-900/10 border border-primary-900/10 text-primary-900 font-medium;
+    @apply bg-primary-900/10 text-primary-900 font-medium;
   }
 
   .badge {
@@ -71,7 +71,7 @@
     @apply flex flex-col gap-2;
   }
   .textField__input {
-    @apply px-4 h-11 rounded-md bg-primary-800 border border-primary-800 duration-150 outline-none appearance-none focus:border-primary-900;
+    @apply px-4 h-11 text-secondary-900 rounded-md bg-primary-800 border border-primary-800 duration-150 outline-none appearance-none focus:border-primary-900;
   }
 
   table thead tr th {
@@ -79,7 +79,7 @@
   }
 
   table tbody tr td {
-    @apply px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white;
+    @apply px-6 py-4 font-medium text-secondary-900 whitespace-nowrap;
   }
 }
 

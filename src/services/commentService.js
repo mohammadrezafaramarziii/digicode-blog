@@ -7,3 +7,7 @@ export async function createCommentApi(data, options) {
 export async function getAllCommentsApi(options = {}) {
   return http.get(`/comment/list`, options).then(({ data }) => data.data);
 }
+
+export async function removeCommentApi(id) {
+  return http.delete(`/comment/remove/${id}`).then(({ data }) => data.data);
+}

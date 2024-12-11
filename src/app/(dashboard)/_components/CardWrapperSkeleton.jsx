@@ -2,7 +2,7 @@ import SkeletonLoading from "@/ui/SkeletonLoading";
 
 export default function CardWrapperSkeleton() {
     return (
-        <div className="w-full grid grid-cols-1 md:grid-cols-3 gap-8 bg-white p-8 rounded-xl mt-6">
+        <div className="w-full grid grid-cols-1 md:grid-cols-3 gap-8 bg-background p-8 rounded-xl mt-6">
             {Array(3).fill({}).map((item, index) => (
                 <div key={index} className="flex items-center gap-4 md:border-l border-l-secondary-900/10 last:border-l-0">
                     <div>

@@ -20,7 +20,7 @@ export default function Sidebar({ onClose }) {
                         دیجی کد
                     </Link>
                     <ButtonIcon variant="none" onClick={onClose} className={`lg:hidden`}>
-                        <CloseIcon className="!w-6 !h-6" />
+                        <CloseIcon className="!w-6 !h-6 !text-secondary-900" />
                     </ButtonIcon>
                 </div>
 

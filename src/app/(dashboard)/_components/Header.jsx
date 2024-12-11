@@ -19,7 +19,7 @@ export default function Header() {
             <div className="justify-between lg:justify-start flex items-center gap-3 lg:gap-12">
                 <div className="lg:hidden">
                     <ButtonIcon variant="none" onClick={() => setSidebar(true)}>
-                        <HamburgerMenuLinearIcon className="!w-6 !h-6" />
+                        <HamburgerMenuLinearIcon className="!w-6 !h-6 !text-secondary-900" />
                     </ButtonIcon>
                 </div>
                 <div className="items-center gap-2 hidden lg:flex">
