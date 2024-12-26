@@ -26,8 +26,11 @@ export default function Comment({ comment }) {
                 <div className="flex-1 flex flex-col justify-between p-4">
                     <div className="w-full">
                         <div className="w-full flex items-center justify-between">
-                            <div className="text-secondary-900 font-bold">
+                            <div className="text-secondary-900 font-bold flex flex-col gap-1">
                                 {comment.content.text}
+                                <span className="text-sm font-medium">
+                                    {comment.user.name}
+                                </span>
                             </div>
                             <span className={`badge ${statusStyle[comment.status].className}`}>
                                 {statusStyle[comment.status].label}

@@ -1,15 +1,20 @@
+import { Suspense } from "react";
 import Title from "../_components/Title";
-import TitleDot from "../_components/TitleDot";
+import CardWrapper from "../_components/CardWrapper";
+import CardWrapperSkeleton from "../_components/CardWrapperSkeleton";
+import LastActivities from "../_components/LastActivities";
 
-export default async function Dashboard() {
+export default function Dashboard() {
 
     return (
         <div>
             <Title title={'داشبورد'} />
+            <Suspense fallback={<CardWrapperSkeleton />}>
+                <CardWrapper />
+            </Suspense>
 
-
-            <div className="pt-10">
-                <TitleDot title={'آخرین مقالات'} />
+            <div className="pt-12">
+                <LastActivities />
             </div>
         </div>
     )

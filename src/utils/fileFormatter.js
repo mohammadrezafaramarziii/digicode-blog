@@ -9,7 +9,8 @@ const getFilename = (url) => {
 
 export const imageUrlToFile = async (imgUrl) => {
   // var imgExt = getUrlExtension(imgUrl);
-
+  console.log(imgUrl);
+  
   const response = await fetch(imgUrl);
   const blob = await response.blob();
   const file = new File([blob], getFilename(imgUrl), {

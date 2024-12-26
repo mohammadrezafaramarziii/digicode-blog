@@ -1,17 +1,20 @@
 import { logoutUser } from "@/lib/logoutUser";
 import ButtonIcon from "@/ui/ButtonIcon";
 import { HomeSmileOutlineIcon, Logout3LinearIcon, NotificationIcon } from "@/ui/Icons";
+import Link from "next/link";
 
 export default function NavOptions() {
 
     return (
         <>
-            <ButtonIcon variant="none">
-                <HomeSmileOutlineIcon className="!w-5 !h-5 text-secondary-900" />
-            </ButtonIcon>
-            <ButtonIcon variant="none">
+            <Link href={'/'}>
+                <ButtonIcon variant="none">
+                    <HomeSmileOutlineIcon className="!w-5 !h-5 text-secondary-900" />
+                </ButtonIcon>
+            </Link>
+            {/* <ButtonIcon variant="none">
                 <NotificationIcon className="!w-5 !h-5 text-secondary-900" />
-            </ButtonIcon>
+            </ButtonIcon> */}
             <form action={async () => {
                 const { res } = await logoutUser();
                 if (res) {
