@@ -1,5 +1,8 @@
 import BanerSlider from "@/components/BanerSlider";
+import LatestPost from "@/components/LatestPost";
 import NewestPosts from "@/components/NewestPosts";
+import PopularsCategory from "@/components/PopularsCategory";
+import RandomPosts from "@/components/RandomPosts";
 import { getCategories } from "@/services/categoryService";
 import { getPosts } from "@/services/postServices";
 import Button from "@/ui/Button";
@@ -22,7 +25,7 @@ export default async function Home() {
 
       <div className="hidden w-auto md:flex justify-center mt-8">
         <ul className="text-sm text-secondary-900 flex items-center gap p-2 bg-background border border-secondary-900/10 rounded-md">
-          {categories.slice(0,5).map((category) => (
+          {categories.slice(0, 5).map((category) => (
             <li className="px-3.5" key={category._id}>
               <Link href={`/blogs/category/${category.slug}`}>
                 {category.title}
@@ -35,8 +38,11 @@ export default async function Home() {
         </ul>
       </div>
 
-      <BanerSlider posts={posts}/>
-      <NewestPosts posts={posts}/>
+      <BanerSlider posts={posts} />
+      <NewestPosts posts={posts} />
+      <LatestPost post={posts[posts.length - 1]} />
+      <RandomPosts posts={posts} />
+      <PopularsCategory />
     </div>
   )
 }

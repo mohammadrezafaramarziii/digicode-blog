@@ -1,3 +1,4 @@
+import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import yekanBakhFont from "@/constants/localFont";
 import { AuthProvider } from "@/context/AuthContext";
@@ -17,17 +18,20 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="fa" dir="rtl" className={`${yekanBakhFont.variable} font-sans min-h-screen`}>
-      <body className="container xl:max-w-screen-xl">
+      <body>
         <Toaster
           position="top-center"
           reverseOrder={false}
         />
         <AuthProvider>
           <SettingsProvider>
-            <Header />
-            <div>
-              {children}
+            <div className="container xl:max-w-screen-xl">
+              <Header />
+              <div>
+                {children}
+              </div>
             </div>
+            <Footer />
           </SettingsProvider>
         </AuthProvider>
       </body>
