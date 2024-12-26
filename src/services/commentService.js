@@ -11,3 +11,9 @@ export async function getAllCommentsApi(options = {}) {
 export async function removeCommentApi(id) {
   return http.delete(`/comment/remove/${id}`).then(({ data }) => data.data);
 }
+
+export async function changeStatusApi({ id, data }) {
+  return http
+    .patch(`/comment/update/${id}`, data)
+    .then(({ data }) => data.data);
+}

@@ -1,5 +1,5 @@
 import { Suspense } from "react";
-import Title from "../../_components/Title";
+import Title from "../../../(dashboard)/_components/Title";
 import PostsTable from "./_/components/PostsTable";
 import PostTableSkeleton from "./_/components/PostTableSkeleton";
 import Search from "@/ui/Search";
@@ -21,7 +21,7 @@ export default async function PostsPage({ searchParams }) {
                 <div>
                     <Search inputClassName={"!bg-background"} btnClassName={"!bg-primary-800"} />
                 </div>
-                <Link href={'/profile/posts/create'}>
+                <Link href={'/admin/posts/create'}>
                     <Button>
                         مقاله جدید
                     </Button>

@@ -6,12 +6,12 @@ import Empty from "@/ui/Empty";
 import { PostsOutlineIcon } from "@/ui/Icons";
 
 export default async function PostsTable({ query = "" }) {
-    const {posts} = await getPosts(query);
+    const { posts } = await getPosts(query);
     // await new Promise(resolve => setTimeout((resolve), 5000))
 
     if (!posts.length) return (
         <Empty text={"مقاله ای یافت نشد!"}>
-            <PostsOutlineIcon className="w-16 h-16 !text-secondary-900/20"/>
+            <PostsOutlineIcon className="w-16 h-16 !text-secondary-900/20" />
         </Empty>
     )
 
@@ -34,7 +34,7 @@ export default async function PostsTable({ query = "" }) {
                         ))}
                     </Table.Body>
                 </Table>
-            </div> 
+            </div>
             <div className="lg:hidden flex flex-col gap4">
                 {posts.map((post, index) => (
                     <PostCard key={post._id} index={index} post={post} />

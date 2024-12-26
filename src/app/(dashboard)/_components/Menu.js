@@ -17,12 +17,6 @@ export const menuData = [
     mobile: true,
   },
   {
-    text: "لیست مقالات",
-    href: "/profile/posts",
-    icon: PostsOutlineIcon,
-    mobile: true,
-  },
-  {
     text: "ذخیره شده ها",
     href: "/profile/bookmarks",
     icon: BookmarkLinearIcon,

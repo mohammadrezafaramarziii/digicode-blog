@@ -1,28 +1,37 @@
 "use client"
 import { toPersianDateLong } from "@/utils/dateFormatter";
 import { DeleteButton } from "./Buttons";
+import ChangeStatus from "./ChangeStatus";
 import Link from "next/link";
 
 const statusStyle = {
     0: {
-        label: "نظر شما توسط ادمین سایت رد شد",
-        className: "text-red-500",
+        label: "رد شده",
+        className: "badge--danger",
     },
     1: {
-        label: "نظر شما پس از تایید نمایش داده خواهد شد",
-        className: "text-primary-900",
+        label: "در انتظار تایید",
+        className: "badge--primary",
     },
+    2: {
+        label: "تایید شده",
+        className: "badge--success",
+    }
 }
 
 export default function Comment({ comment }) {
-
     return (
         <>
             <div className={`w-full bg-background flex flex-col rounded-lg p4 relative transform duration-300`}>
-                <div className="flex-1 p-4 flex flex-col justify-between">
+                <div className="flex-1 flex flex-col justify-between p-4">
                     <div className="w-full">
-                        <div className="text-secondary-900 font-bold">
-                            {comment.content.text}
+                        <div className="w-full flex items-center justify-between">
+                            <div className="text-secondary-900 font-bold">
+                                {comment.content.text}
+                            </div>
+                            <span className={`badge ${statusStyle[comment.status].className}`}>
+                                {statusStyle[comment.status].label}
+                            </span>
                         </div>
                         {!comment.openToComment &&
                             <div className="w-full bg-primary-800 p-3 rounded-lg flex flex-col gap-2 mt-2">
@@ -36,20 +45,14 @@ export default function Comment({ comment }) {
                         }
                     </div>
 
-                    {comment.status !== 2 &&
-                        <div className="pt-4">
-                            <span className={`${statusStyle[comment.status].className} text-sm font-medium`}>
-                                {statusStyle[comment.status].label}
-                            </span>
-                        </div>
-                    }
 
-                    <div className="w-full flex items-end justify-between pt-2">
-                        <div className="flex items-center gap-4 text-sm">
+
+                    <div className="flex items-end justify-between pt-6">
+                        <div className="flex items-center gap-2 text-sm">
                             <Link href={`/blogs/${comment?.post?.slug || comment?.parentComment?.slug}`} className="text-primary-900">
                                 جزئیات پست
                             </Link>
-
+                            <ChangeStatus id={comment._id} currentStatus={comment.status} />
                             <DeleteButton id={comment._id} />
                         </div>
                         <div className="text-xs text-secondary-700">

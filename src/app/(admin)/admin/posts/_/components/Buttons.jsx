@@ -11,7 +11,7 @@ import { AlertTimer } from "@/ui/Alert";
 
 export function UpdateButton({ id }) {
     return (
-        <Link href={`/profile/posts/${id}/edit`}>
+        <Link href={`/admin/posts/${id}/edit`}>
             <div className="hidden lg:block">
                 <ButtonIcon>
                     <EditIcon className="!w-6 !h-6" />
