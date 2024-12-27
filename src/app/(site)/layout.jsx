@@ -10,7 +10,7 @@ import "react-loading-skeleton/dist/skeleton.css";
 export const metadata = {
   title: {
     template: "%s | دیجی کد",
-    default: "پنل ادمین دیجی کد"
+    default: "دیجی کد"
   },
   description: "دیجی کد، وبلاگ برنامه نویسان",
 };
