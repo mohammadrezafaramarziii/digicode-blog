@@ -35,7 +35,7 @@ async function SinglePost({ params }) {
     const { slug } = await params;
     const post = await getPostBySlug(slug, options);
     moment.locale("fa");    
-
+    
     if (!post) return notFound();
 
     return (
@@ -89,7 +89,7 @@ async function SinglePost({ params }) {
                         </div>
 
                         <div className="w-full pt-4 mt-4 border-t border-t-secondary-700/20">
-                            <div className="w-full flex items-center justify-between">
+                            <div className="w-full flex flex-col gap-4 md:flex-row md:items-center justify-between">
                                 <div className="flex items-center gap-1 text-sm text-secondary-700">
                                     <ClockCircleOutlineIcon className="w-5 h-5" />
                                     <span>
@@ -98,14 +98,14 @@ async function SinglePost({ params }) {
                                 </div>
 
                                 <div className="flex items-center gap-2">
-                                    {post.tags.map((tag) => (
-                                        <div key={tag.id} className="badge badge--primray">
-                                            {tag.title}
+                                    {post.tags.map((tag, index) => (
+                                        <div key={index} className="badge badge--primary">
+                                            #{tag}
                                         </div>
                                     ))}
                                 </div>
                             </div>
-                            <div className="w-full flex items-center justify-between  pt-4">
+                            <div className="w-full flex flex-col gap-4 md:flex-row items-center justify-between  pt-4">
                                 <SinglePostIntraction post={post} />
                                 <Share post={post} />
                             </div>

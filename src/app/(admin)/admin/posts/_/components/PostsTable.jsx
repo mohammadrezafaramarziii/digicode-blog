@@ -25,6 +25,7 @@ export default async function PostsTable({ query = "" }) {
                         <th>دسته بندی</th>
                         <th>نویسنده</th>
                         <th>تاریخ ایجاد</th>
+                        <th>آخرین بروزرسانی</th>
                         <th>نوع</th>
                         <th></th>
                     </Table.Header>

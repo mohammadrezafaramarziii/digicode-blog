@@ -6,7 +6,7 @@ export default async function CommentsPage() {
 
     return (
         <div>
-            <CommentList comments={comments}/>
+            <CommentList comments={comments} />
         </div>
     )
 }

@@ -8,6 +8,14 @@ import { SettingsProvider } from "@/context/SettingsContext";
 import SidebarAdmin from "./_components/SidebarAdmin";
 import HeaderAdmin from "./_components/HeaderAdmin";
 
+export const metadata = {
+    title: {
+        template: "%s | پنل ادمین دیجی کد",
+        default: "دیجی کد"
+    },
+    description: "دیجی کد، وبلاگ برنامه نویسان",
+};
+
 export default function RootLayoutAdmin({ children }) {
     return (
         <html lang="fa" dir="rtl" className={`${yekanBakhFont.variable} font-sans`}>

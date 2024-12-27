@@ -82,7 +82,7 @@ export default function Me() {
                     <div className="w-auto inline-block rounded-full relative overflow-hidden">
                         <Avatar avatar={avatarUrl} name={user?.name} width={100} />
                         <label htmlFor="avatar" className="w-full flex items-center justify-center text-white absolute bottom-0 right-0 bg-black/50 py-2 cursor-pointer">
-                            <CameraBoldIcon className="w-6 h-6"/>
+                            <CameraBoldIcon className="w-6 h-6" />
                         </label>
                     </div>
 

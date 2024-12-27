@@ -1,5 +1,6 @@
 import { getCategories } from "@/services/categoryService";
 import { CategoryBoldDuotoneIcon } from "@/ui/Icons";
+import Link from "next/link";
 
 const categoryStyle = {
     0: "badge--danger",
@@ -26,9 +27,9 @@ export default async function PopularsCategory() {
 
                 <div className="w-full max-w-md mx-auto flex items-center justify-center flex-wrap gap-4 mt-8">
                     {categories.slice(0, 7).map((category, index) => (
-                        <div key={category._id} className={`badge ${categoryStyle[index]}`}>
+                        <Link key={category._id} href={`/blogs/${category.slug}`} className={`badge ${categoryStyle[index]}`}>
                             {category.title}
-                        </div>
+                        </Link>
                     ))}
                 </div>
             </div>

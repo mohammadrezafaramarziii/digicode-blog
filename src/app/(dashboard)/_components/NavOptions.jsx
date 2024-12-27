@@ -16,10 +16,8 @@ export default function NavOptions() {
                 <NotificationIcon className="!w-5 !h-5 text-secondary-900" />
             </ButtonIcon> */}
             <form action={async () => {
-                const { res } = await logoutUser();
-                if (res) {
-                    window.location.reload();
-                }
+                window.location.href = "/";
+                await logoutUser();
             }}>
                 <ButtonIcon type="submit" variant="none">
                     <Logout3LinearIcon className="!w-5 !h-5 text-secondary-900" />

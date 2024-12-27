@@ -117,38 +117,22 @@ input[type="number"] {
   -moz-appearance: textfield; /* Firefox */
 }
 
-/* TABLE */
-
-/* table {
-  border-collapse: collapse;
-  border-spacing: 0;
-  width: 100%;
+.rti--container{
+  @apply !px-4 !min-h-11 !text-secondary-900 !rounded-md !bg-primary-800 !border !border-primary-800 !duration-150 !outline-none !appearance-none focus:!border-primary-900;
 }
 
-table .title-row {
-  background-color: rgb(var(--color-secondary-100));
+*::-webkit-scrollbar {
+  width: 10px;
 }
 
-table td,
-table th {
-  border-bottom: 1px solid rgb(var(--color-secondary-200));
-  text-align: right;
-  white-space: nowrap;
+*::-webkit-scrollbar-track {
+  background: rgba(var(--color-secondary-900),0.1);
 }
 
-table th {
-  padding: 0.6rem 1rem;
-  color: rgb(var(--color-secondary-600));
-  font-size: 0.9rem;
+*::-webkit-scrollbar-thumb {
+  background: rgba(var(--color-primary-900),0.2);
+  border-radius: 3px;
 }
-a {
-  display: block;
-}
-table td {
-  font-size: 0.85rem;
-  padding: 1rem 1rem;
-  color: rgb(var(--color-secondary-600));
-} */
 
 /* for loading */
 .dots {

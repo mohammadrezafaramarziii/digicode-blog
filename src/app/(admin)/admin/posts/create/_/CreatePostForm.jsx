@@ -19,6 +19,8 @@ import RHFTextArea from "@/ui/RHFTextArea";
 import useEditPost from "./useEditPost";
 import { imageUrlToFile } from "@/utils/fileFormatter";
 import useMoveBack from "@/hooks/useMoveBack";
+import { TagsInput } from "react-tag-input-component";
+import RelatedPostsSelect from "./RelatedPostsSelect";
 
 const schema = Yup
     .object({
@@ -46,7 +48,7 @@ const schema = Yup
     .required();
 
 export default function CreatePostForm({ postToEdit = {} }) {
-    const { _id: editId, title, text, slug, briefText, coverImageUrl: prevCoverImageUrl, coverImage, category, readingTime } = postToEdit;
+    const { _id: editId, title, text, related: prevRelated, tags: prevTags, slug, briefText, coverImageUrl: prevCoverImageUrl, coverImage, category, readingTime } = postToEdit;
     const isEditSession = Boolean(editId);
 
     let editValues = {};
@@ -64,6 +66,10 @@ export default function CreatePostForm({ postToEdit = {} }) {
 
     const { categories, isLoading } = useCategories();
     const [coverImageUrl, setCoverImageUrl] = useState(prevCoverImageUrl || null);
+    const [tags, setTags] = useState(prevTags || []);
+    const trasnformPosts = isEditSession && prevRelated.map((post) => ({ value: post._id, label: post.title }));
+
+    const [relatedPosts, setRelatedPosts] = useState(trasnformPosts || []);
     const { createPost, isCreating } = useCreatePost();
     const { updatePost, isUpdating } = useEditPost();
     const router = useRouter();
@@ -83,6 +89,7 @@ export default function CreatePostForm({ postToEdit = {} }) {
         defaultValues: editValues
     });
 
+
     useEffect(() => {
         async function fetchMyApi() {
             const file = await imageUrlToFile(prevCoverImageUrl);
@@ -99,17 +106,24 @@ export default function CreatePostForm({ postToEdit = {} }) {
         for (const key in data) {
             formData.append(key, data[key]);
         }
+
+        formData.append("tags", JSON.stringify(tags));
+
+        const transformRelatedPosts = relatedPosts.map((post) => (post.value));
+        formData.append("related", JSON.stringify(transformRelatedPosts));
+
+
         if (isEditSession) {
             updatePost({ id: editId, data: formData }, {
                 onSuccess: () => {
                     reset();
-                    router.replace("/profile/posts");
+                    router.replace("/admin/posts");
                 }
             })
         } else {
             createPost(formData, {
                 onSuccess: () => {
-                    router.replace("/profile/posts");
+                    router.replace("/admin/posts");
                 }
             });
         }
@@ -220,7 +234,25 @@ export default function CreatePostForm({ postToEdit = {} }) {
                         name={'category'}
                         options={[{ value: "", label: "دسته بندی را انتخاب کنید..." }, ...categories || []]}
                     />
-                    <div className="lg:col-span-2">
+                    <div className="textField relative">
+                        <label htmlFor={"tags"} className="text-secondary-800 text-sm block pr-2">
+                            تگ ها
+                        </label>
+                        <TagsInput
+                            value={tags}
+                            onChange={setTags}
+                            name="tags"
+                            placeHolder="تگ ها"
+                            classNames={{
+                                tag: "!bg-background",
+                                input: "!bg-transparent",
+                            }}
+                        />
+                    </div>
+
+                    <RelatedPostsSelect value={relatedPosts} onChange={setRelatedPosts} />
+
+                    <div className="md:col-span-2">
                         <RHFTextArea
                             label={'متن'}
                             errors={errors}

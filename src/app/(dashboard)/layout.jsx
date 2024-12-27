@@ -8,6 +8,14 @@ import "react-loading-skeleton/dist/skeleton.css";
 import ReactQueryProviders from "@/providers/ReactQueryProviders";
 import { SettingsProvider } from "@/context/SettingsContext";
 
+export const metadata = {
+    title: {
+        template: "%s | پروفایل",
+        default: "پروفایل"
+    },
+    description: "دیجی کد، وبلاگ برنامه نویسان",
+};
+
 export default function RootLayout({ children }) {
     return (
         <html lang="fa" dir="rtl" className={`${yekanBakhFont.variable} font-sans`}>

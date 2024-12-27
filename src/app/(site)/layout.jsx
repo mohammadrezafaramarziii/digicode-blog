@@ -9,10 +9,10 @@ import "react-loading-skeleton/dist/skeleton.css";
 
 export const metadata = {
   title: {
-    template: "%s | بلاگ اپ",
-    default: "بلاگ اپ"
+    template: "%s | دیجی کد",
+    default: "پنل ادمین دیجی کد"
   },
-  description: "خوش آمدید",
+  description: "دیجی کد، وبلاگ برنامه نویسان",
 };
 
 export default function RootLayout({ children }) {

@@ -17,7 +17,7 @@ const typeStyle = {
 }
 
 export default function PostRow({ index, post }) {
-    const { title, category, author, createdAt, type, _id, slug } = post;
+    const { title, category, author, createdAt, updatedAt, type, _id, slug } = post;
     const [stepDelete, setStepDelete] = useState(0);
 
     return (
@@ -27,6 +27,7 @@ export default function PostRow({ index, post }) {
             <td>{category.title}</td>
             <td>{author.name}</td>
             <td>{toPersianDateLong(createdAt)}</td>
+            <td>{toPersianDateLong(updatedAt)}</td>
             <td>
                 <span className={`badge ${typeStyle[type].className}`}>
                     {typeStyle[type].label}
