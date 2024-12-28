@@ -1,9 +1,9 @@
 import { logoutUser } from "@/lib/logoutUser";
 import ButtonIcon from "@/ui/ButtonIcon";
-import { HomeSmileOutlineIcon, Logout3LinearIcon, NotificationIcon } from "@/ui/Icons";
+import { HomeSmileOutlineIcon, Logout3LinearIcon, NotificationIcon, SupportIcon } from "@/ui/Icons";
 import Link from "next/link";
 
-export default function NavOptions() {
+export default function NavOptions({ isAdmin = false }) {
 
     return (
         <>
@@ -15,6 +15,11 @@ export default function NavOptions() {
             {/* <ButtonIcon variant="none">
                 <NotificationIcon className="!w-5 !h-5 text-secondary-900" />
             </ButtonIcon> */}
+            {!isAdmin &&
+                <ButtonIcon variant="none">
+                    <SupportIcon className="!w-5 !h-5 text-secondary-900" />
+                </ButtonIcon>
+            }
             <form action={async () => {
                 window.location.href = "/";
                 await logoutUser();

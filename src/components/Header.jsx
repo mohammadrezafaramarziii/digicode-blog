@@ -20,8 +20,8 @@ export default function Header() {
                         </Link>
                     </>
                     :
-                    <Link href={'/profile'} className="btn btn--primary">
-                        پروفایل
+                    <Link href={user?.role === "ADMIN" ? "/admin" : "/profile"} className="btn btn--primary">
+                        {user?.role === "ADMIN" ? "پنل ادمین" : "پروفایل"}
                     </Link>
                 }
             </div>

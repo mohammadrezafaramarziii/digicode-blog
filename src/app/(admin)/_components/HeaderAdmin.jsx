@@ -23,7 +23,7 @@ export default function HeaderAdmin() {
                     </ButtonIcon>
                 </div>
                 <div className="items-center gap-2 hidden lg:flex">
-                    <NavOptions />
+                    <NavOptions isAdmin={true} />
                 </div>
                 <div className="hidden lg:flex items-center gap-1 text-sm font-medium text-secondary-800">
                     <span>

@@ -17,7 +17,7 @@ export default function SidebarAdmin({ onClose }) {
         <aside className="w-full min-h-full flex flex-col bg-background border-l border-l-secondary-900/10">
             <div className="w-full flex-1 p-4 flex flex-col gap-8">
                 <div className="flex items-center justify-between pt-4">
-                   <DigiCodeLogoLg customeLabel="پنل ادمین"/>
+                    <DigiCodeLogoLg customeLabel="پنل ادمین" />
                     <ButtonIcon variant="none" onClick={onClose} className={`lg:hidden`}>
                         <CloseIcon className="!w-6 !h-6 !text-secondary-900" />
                     </ButtonIcon>
@@ -32,7 +32,7 @@ export default function SidebarAdmin({ onClose }) {
 
                 <div className="w-full flex flex-1 lg:!hidden items-end justify-between p-4">
                     <div className="items-center gap-2 flex">
-                        <NavOptions />
+                        <NavOptions isAdmin={true} />
                     </div>
                     <div className="flex items-center gap-1 text-sm font-medium text-secondary-800">
                         <span>
