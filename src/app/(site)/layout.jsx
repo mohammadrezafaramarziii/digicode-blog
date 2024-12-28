@@ -1,5 +1,6 @@
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
+import SupportBox from "@/components/SupportBox";
 import yekanBakhFont from "@/constants/localFont";
 import { AuthProvider } from "@/context/AuthContext";
 import { SettingsProvider } from "@/context/SettingsContext";
@@ -31,6 +32,7 @@ export default function RootLayout({ children }) {
                 {children}
               </div>
             </div>
+            <SupportBox />
             <Footer />
           </SettingsProvider>
         </AuthProvider>

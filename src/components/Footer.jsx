@@ -1,5 +1,5 @@
 import Button from "@/ui/Button";
-import { LogosInstagramIcon, LogosTelegramIcon, LogosWhatsappIcon } from "@/ui/Icons";
+import { GmailIcon, LogosInstagramIcon, LogosTelegramIcon, LogosWhatsappIcon } from "@/ui/Icons";
 import Link from "next/link";
 import { DigiCodeLogoLg, DigiCodeLogoSm } from "./DigiCodeLogo";
 
@@ -9,9 +9,9 @@ export default function Footer() {
             <div className="w-full grid grid-cols-1 gap-4 md:grid-cols-2 bg-primary-800 p-10 relative">
                 <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
                     <div className="md:col-span-3">
-                       <DigiCodeLogoLg customeLabel="درباره دیجی کد"/>
+                        <DigiCodeLogoLg customeLabel="درباره دیجی کد" />
                         <p className="text-sm text-secondary-900 line-clamp-3 leading-6 pt-2">
-                            لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد
+                            وبلاگ ما جایی برای یادگیری، الهام گرفتن و به‌روز ماندن در دنیای برنامه‌نویسی است. با مقالات آموزشی، اخبار تکنولوژی و نکات کاربردی، همراه شما در مسیر پیشرفت هستیم. 🚀
                         </p>
                     </div>
                     <div className="md:col-span-1">
@@ -30,11 +30,11 @@ export default function Footer() {
                                 </Link>
                             </li>
                             <li>
-                                تماس با ما
+                                <Link href={'/support'}>
+                                    پشتیبانی
+                                </Link>
                             </li>
-                            <li>
-                                درباره ما
-                            </li>
+                            
                         </ul>
                     </div>
                 </div>
@@ -54,23 +54,29 @@ export default function Footer() {
                     </div>
                     <div>
                         <ul className="flex items-center gap-5">
-                            <LogosTelegramIcon className="w-8 h-8" />
-                            <LogosInstagramIcon className="w-8 h-8" />
-                            <LogosWhatsappIcon className="w-8 h-8" />
+                            <Link href={'https://t.me/mohammadrezafaramarziii'} target="_blank">
+                                <LogosTelegramIcon className="w-8 h-8" />
+                            </Link>
+                            <Link href={'https://instagram.com/mohammadrezafaramarziii'} target="_blank">
+                                <LogosInstagramIcon className="w-8 h-8" />
+                            </Link>
+                            <Link href={'mailto:mf575583@gmail.com'} target="_blank">
+                                <GmailIcon className="w-8 h-8" />
+                            </Link>
                         </ul>
                     </div>
                 </div>
 
                 {/* logo bg */}
-                <div className="absolute top-10 right-20 md:right-40 rotate-45 opacity-15">
-                    <DigiCodeLogoSm className={"!w-28 !h-28 md:!w-40 md:!h-40"}/>
+                <div className="absolute top-10 right-20 md:right-40 rotate-45 opacity-20">
+                    <DigiCodeLogoSm className={"!w-28 !h-28 md:!w-40 md:!h-40"} />
                 </div>
-                <div className="absolute hidden md:block top-5 left-4 -rotate-45 opacity-15">
-                    <DigiCodeLogoSm className={"!w-14 !h-14"}/>
+                <div className="absolute hidden md:block top-5 left-4 -rotate-45 opacity-20">
+                    <DigiCodeLogoSm className={"!w-14 !h-14"} />
                 </div>
             </div>
             <div className="w-full text-white text-center flex justify-center p-4 bg-primary-900 text-sm font-medium">
-                © کلیه حقوق مادی و معنوی دوره ها متعلق به این دیجی کد می باشد.
+                © کلیه حقوق مادی و معنوی سایت متعلق به این دیجی کد می باشد.
             </div>
         </div>
     )

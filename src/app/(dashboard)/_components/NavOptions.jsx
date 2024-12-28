@@ -16,9 +16,11 @@ export default function NavOptions({ isAdmin = false }) {
                 <NotificationIcon className="!w-5 !h-5 text-secondary-900" />
             </ButtonIcon> */}
             {!isAdmin &&
-                <ButtonIcon variant="none">
-                    <SupportIcon className="!w-5 !h-5 text-secondary-900" />
-                </ButtonIcon>
+                <Link href={'/support'}>
+                    <ButtonIcon variant="none">
+                        <SupportIcon className="!w-5 !h-5 text-secondary-900" />
+                    </ButtonIcon>
+                </Link>
             }
             <form action={async () => {
                 window.location.href = "/";
