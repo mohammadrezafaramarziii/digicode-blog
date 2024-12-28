@@ -1,4 +1,6 @@
 "use client";
+import ToastError from "@/components/toasts/ToastError";
+import ToastSuccess from "@/components/toasts/ToastSuccess";
 import { getUserApi, signinApi, signupApi } from "@/services/authService";
 import { bookmarkPostApi, likePostApi } from "@/services/postServices";
 import { useRouter } from "next/navigation";
@@ -58,7 +60,7 @@ export function AuthProvider({ children }) {
         } catch (error) {
             const errorMessage = error.response.data.message
             dispatch({ type: "rejected", payload: errorMessage });
-            toast.error(errorMessage);
+            ToastError(errorMessage);
         }
     }
 
@@ -71,27 +73,27 @@ export function AuthProvider({ children }) {
         } catch (error) {
             const errorMessage = error.response.data.message
             dispatch({ type: "rejected", payload: errorMessage });
-            toast.error(errorMessage);
+            ToastError(errorMessage);
         }
     }
 
     async function likePost(postId) {
         try {
             const { message } = await likePostApi(postId);
-            toast.success(message);
+            ToastSuccess(message);
             router.refresh()
         } catch (error) {
-            toast.error(error.response.data.message);
+            ToastError(error.response.data.message);
         }
     }
 
     async function bookmarkPost(postId) {
         try {
             const { message } = await bookmarkPostApi(postId);
-            toast.success(message);
+            ToastSuccess(message);
             router.refresh()
         } catch (error) {
-            toast.error(error.response.data.message);
+            ToastError(error.response.data.message);
         }
     }
 

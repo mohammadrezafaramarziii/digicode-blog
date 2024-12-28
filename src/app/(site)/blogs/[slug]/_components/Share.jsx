@@ -1,5 +1,6 @@
 "use client"
 
+import ToastSuccess from "@/components/toasts/ToastSuccess";
 import { CopyBoldIcon } from "@/ui/Icons"
 import { usePathname } from "next/navigation"
 import CopyToClipboard from "react-copy-to-clipboard";
@@ -16,7 +17,7 @@ export default function Share() {
 
             <CopyToClipboard
                 text={`${process.env.NEXT_PUBLIC_DOMAIN_URL}${pathname}`}
-                onCopy={() => toast.success("کپی شد")}
+                onCopy={() => ToastSuccess("کپی شد")}
             >
                 <CopyBoldIcon className="w-5 h-5 !text-secondary-900/20" />
             </CopyToClipboard>

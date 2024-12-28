@@ -13,6 +13,7 @@ import RHFTextField from "@/ui/RHFTextField";
 import * as Yup from "yup";
 import toast from "react-hot-toast";
 import { CameraBoldIcon } from "@/ui/Icons";
+import ToastSuccess from "@/components/toasts/ToastSuccess";
 
 const schema = Yup
     .object({
@@ -51,7 +52,7 @@ export default function Me() {
                 try {
                     const res = await mutateUploadAvatar(formData);
                     await getUser();
-                    toast.success(message);
+                    ToastSuccess(message);
                 } catch (error) { }
             }
         } catch (error) { }

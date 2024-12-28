@@ -12,7 +12,7 @@ export default function PostComment({ post: { comments, _id: postId } }) {
     const { isAuthenticated, isLoading } = useAuth();
     const [isAddComment, setAddComment] = useState(false);
     const [parent, setParent] = useState();
-    
+
     const addNewCommentHandler = (parent) => {
         setParent(parent);
         setAddComment(true);
@@ -35,9 +35,10 @@ export default function PostComment({ post: { comments, _id: postId } }) {
             {!isLoading && !isAuthenticated &&
                 <div className="pb-6">
                     <Alert>
-                        <div className="flex items-center justify-between w-full">
-                            برای ارسال نظر ابتدا وارد حساب کاربری خود شوید
-
+                        <div className="flex flex-col sm:flex-row gap-4 items-center justify-between w-full">
+                            <div className="text-center">
+                                برای ارسال نظر ابتدا وارد حساب کاربری خود شوید
+                            </div>
                             <Link href={'/signin'} className="text-base underline">
                                 ورود به حساب کاربری
                             </Link>
@@ -47,7 +48,7 @@ export default function PostComment({ post: { comments, _id: postId } }) {
             }
 
             {isAddComment &&
-                <CreateCommentForm onClose={() => setAddComment(false)} parent={parent} postId={postId}/>
+                <CreateCommentForm onClose={() => setAddComment(false)} parent={parent} postId={postId} />
             }
 
             <div>
@@ -75,7 +76,7 @@ export default function PostComment({ post: { comments, _id: postId } }) {
                     ))
                     :
                     <div className="w-full text-primary-900/50 py-14 flex flex-col gap-4 items-center justify-center">
-                        <ChatDotsOutlineIcon className="w-14 h-14"/>
+                        <ChatDotsOutlineIcon className="w-14 h-14" />
                         <div className="text-lg font-bold">
                             نظری ثبت نشده است!
                         </div>

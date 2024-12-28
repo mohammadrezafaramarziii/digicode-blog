@@ -12,6 +12,8 @@ import SinglePostIntraction from "./_components/SinglePostIntraction";
 import { cookies } from "next/headers";
 import setCookieOnReq from "@/utils/setCookieOnReq";
 import PostComment from "./_components/PostComment";
+import AuthorPost from "./_components/AuthorPost";
+import TagsPost from "./_components/TagsPost";
 
 export async function generateMetadata({ params }) {
     const { slug } = await params;
@@ -25,7 +27,7 @@ export async function generateMetadata({ params }) {
 }
 
 export async function generateStaticParams() {
-    const {posts} = await getPosts();
+    const { posts } = await getPosts();
     return posts.map((post) => ({ slug: post.slug }));
 }
 
@@ -34,16 +36,16 @@ async function SinglePost({ params }) {
     const options = setCookieOnReq(cookieStore);
     const { slug } = await params;
     const post = await getPostBySlug(slug, options);
-    moment.locale("fa");    
-    
+    moment.locale("fa");
+
     if (!post) return notFound();
 
     return (
         <section className="mt-14 mb-20">
-            <div className="w-full grid grid-cols-12 lg:grid-cols-24 gap-6">
-                <div className="col-span-12 lg:col-span-17 flex flex-col gap-6">
+            <div className="w-full grid grid-cols-12 xl:grid-cols-24 gap-6">
+                <div className="col-span-12 xl:col-span-17 flex flex-col gap-6">
                     <div className="w-full mb-6">
-                        <Image src={'/images/babner-singlepost.jpg'} alt="" width={728} height={90} className="w-full rounded-lg" />
+                        <Image src={'/images/baner1.jpg'} alt="" width={1270} height={265} className="w-full rounded-lg" />
                     </div>
                     <div className="w-full">
                         <div className="aspect-w-16 aspect-h-9 rounded-xl overflow-hidden">
@@ -73,7 +75,7 @@ async function SinglePost({ params }) {
                             </div>
                         </div>
 
-                        <p className="text-sm lg:text-base text-secondary-800 font-medium pb-6 whitespace-pre-wrap">
+                        <p className="md:text-lg text-secondary-800 font-medium pb-6 whitespace-pre-wrap">
                             {post.text}
                         </p>
 
@@ -117,8 +119,20 @@ async function SinglePost({ params }) {
                 </div>
 
 
-                <div className="col-span-12 lg:col-span-7">
+                <div className="col-span-12 xl:col-span-7 space-y-6">
+                    <AuthorPost author={post.author} />
+                    {post.tags.length > 0 && <TagsPost tags={post.tags} />}
                     {post.related.length > 0 && <RelatedPost posts={post.related} />}
+                    <Link href={'https://youtu.be/RFGm-nBbyg4'} target="_blank" className="w-full block">
+                        <Image
+                            src={'/images/banerRocket.jpg'}
+                            alt="rocket"
+                            width={1400}
+                            height={760}
+                            priority
+                            className="rounded-xl"
+                        />
+                    </Link>
                 </div>
             </div>
         </section>

@@ -1,3 +1,5 @@
+import ToastError from "@/components/toasts/ToastError";
+import ToastSuccess from "@/components/toasts/ToastSuccess";
 import { changeStatusApi } from "@/services/commentService";
 import { useMutation } from "@tanstack/react-query";
 import toast from "react-hot-toast";
@@ -6,10 +8,10 @@ export default function useChangeStatus() {
   const { isPending: isChanging, mutate: changeStatus } = useMutation({
     mutationFn: changeStatusApi,
     onSuccess: (data) => {
-      toast.success(data.message);
+      ToastSuccess(data.message);
     },
     onError: (error) => {
-      toast.error(error?.response?.data?.message);
+      ToastError(error?.response?.data?.message);
     },
   });
 

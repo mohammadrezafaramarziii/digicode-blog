@@ -1,4 +1,6 @@
 "use client"
+import ToastError from "@/components/toasts/ToastError";
+import ToastSuccess from "@/components/toasts/ToastSuccess";
 import { useAuth } from "@/context/AuthContext"
 import { createComment } from "@/lib/actions";
 import Avatar from "@/ui/Avatar";
@@ -21,11 +23,11 @@ export default function CreateCommentForm({ onClose, postId, parent }) {
 
     useEffect(() => {
         if (state.error) {
-            toast.error(state.error);
+            ToastError(state.error);
         }
 
         if (state.message) {
-            toast.success(state.message);
+            ToastSuccess(state.message);
             onClose();
             setText("");
         }

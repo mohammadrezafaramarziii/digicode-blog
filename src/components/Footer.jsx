@@ -1,16 +1,16 @@
 import Button from "@/ui/Button";
 import { LogosInstagramIcon, LogosTelegramIcon, LogosWhatsappIcon } from "@/ui/Icons";
+import Link from "next/link";
+import { DigiCodeLogoLg, DigiCodeLogoSm } from "./DigiCodeLogo";
 
 export default function Footer() {
     return (
         <div className="pt-14">
-            <div className="w-full grid grid-cols-1 gap-4 md:grid-cols-2 bg-primary-800 p-10">
+            <div className="w-full grid grid-cols-1 gap-4 md:grid-cols-2 bg-primary-800 p-10 relative">
                 <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
                     <div className="md:col-span-3">
-                        <h3 className="text-lg font-bold text-primary-900 mb-3">
-                            درباره دیجی کد
-                        </h3>
-                        <p className="text-sm text-secondary-900 line-clamp-3 leading-6">
+                       <DigiCodeLogoLg customeLabel="درباره دیجی کد"/>
+                        <p className="text-sm text-secondary-900 line-clamp-3 leading-6 pt-2">
                             لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد
                         </p>
                     </div>
@@ -20,10 +20,14 @@ export default function Footer() {
                         </h3>
                         <ul className="flex flex-col text-sm text-secondary-800 gap-3">
                             <li>
-                                صفحه اصلی
+                                <Link href={'/'}>
+                                    صفحه اصلی
+                                </Link>
                             </li>
                             <li>
-                                مقالات
+                                <Link href={'/blogs'}>
+                                    مقالات
+                                </Link>
                             </li>
                             <li>
                                 تماس با ما
@@ -55,6 +59,14 @@ export default function Footer() {
                             <LogosWhatsappIcon className="w-8 h-8" />
                         </ul>
                     </div>
+                </div>
+
+                {/* logo bg */}
+                <div className="absolute top-10 right-20 md:right-40 rotate-45 opacity-15">
+                    <DigiCodeLogoSm className={"!w-28 !h-28 md:!w-40 md:!h-40"}/>
+                </div>
+                <div className="absolute hidden md:block top-5 left-4 -rotate-45 opacity-15">
+                    <DigiCodeLogoSm className={"!w-14 !h-14"}/>
                 </div>
             </div>
             <div className="w-full text-white text-center flex justify-center p-4 bg-primary-900 text-sm font-medium">

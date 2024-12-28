@@ -7,6 +7,7 @@ import 'swiper/css/navigation';
 import { ArrowLeftOutlineIcon, CalendarLinearIcon, ClockCircleOutlineIcon } from "@/ui/Icons";
 import { toPersianDateShort } from "@/utils/dateFormatter";
 import ButtonIcon from "@/ui/ButtonIcon";
+import Link from "next/link";
 
 export default function BanerSlider({ posts }) {
 
@@ -26,7 +27,7 @@ export default function BanerSlider({ posts }) {
                 {posts.slice(0, 3).map((post, index) => {
                     return (
                         <SwiperSlide key={index} className="relative">
-                            <div className="w-full relative aspect-w-10 aspect-h-5 shadow-xl rounded-3xl overflow-hidden">
+                            <Link href={`/blogs/${post.slug}`} className="w-full block relative aspect-w-10 aspect-h-5 shadow-xl rounded-3xl overflow-hidden">
                                 <Image
                                     src={post.coverImageUrl}
                                     alt=""
@@ -34,7 +35,7 @@ export default function BanerSlider({ posts }) {
                                     className="w-full h-full object-cover object-center"
                                     priority
                                 />
-                            </div>
+                            </Link>
                             <div className="w-full hidden md:flex items-center justify-between p-8 absolute top-0 right-0">
                                 <div className="text-sm text-white flex items-center gap-1">
                                     <CalendarLinearIcon className="w-5 h-5" />
@@ -49,7 +50,7 @@ export default function BanerSlider({ posts }) {
                                     </div>
                                 </div>
                             </div>
-                            <div className="hidden w-full md:flex justify-center sticky bottom-[60px] right-0">
+                            <Link href={`/blogs/${post.slug}`} className="hidden w-full md:flex justify-center sticky bottom-[60px] right-0">
                                 <div className="w-8/12 py-6 px-14 h-full bg-primary-900/50 backdrop-blur rounded-3xl border border-white shadow-xl">
                                     <div className="flex flex-col items-center gap-2 text-white">
                                         <h3 className="text-2xl font-bold line-clamp-1">
@@ -60,7 +61,7 @@ export default function BanerSlider({ posts }) {
                                         </p>
                                     </div>
                                 </div>
-                            </div>
+                            </Link>
                         </SwiperSlide>
                     )
                 })}

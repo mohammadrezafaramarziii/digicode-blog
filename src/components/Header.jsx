@@ -2,16 +2,13 @@
 import { useAuth } from "@/context/AuthContext";
 import Button from "@/ui/Button";
 import Link from "next/link";
+import { DigiCodeLogoLg, DigiCodeLogoSm } from "./DigiCodeLogo";
 
 export default function Header() {
     const { user, isLoading } = useAuth();
     return (
         <div className="w-full flex items-center justify-between pt-7">
-            <div className="text-2xl text-primary-900 font-black">
-                <Link href={"/"}>
-                    دیجی کد
-                </Link>
-            </div>
+            <DigiCodeLogoLg />
             <div className={`${isLoading ? "blur-sm opacity-50" : ""} duration-150`}>
                 {!isLoading && !user ?
                     <>

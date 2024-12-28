@@ -8,6 +8,7 @@ import { toPersianDateWeek } from "@/utils/dateFormatter";
 import NavOptions from "@/app/(dashboard)/_components/NavOptions";
 import SidebarLink from "@/components/SidebarLink";
 import { menuData } from "./Menu";
+import { DigiCodeLogoLg } from "@/components/DigiCodeLogo";
 
 export default function SidebarAdmin({ onClose }) {
     const { user } = useAuth();
@@ -16,9 +17,7 @@ export default function SidebarAdmin({ onClose }) {
         <aside className="w-full min-h-full flex flex-col bg-background border-l border-l-secondary-900/10">
             <div className="w-full flex-1 p-4 flex flex-col gap-8">
                 <div className="flex items-center justify-between pt-4">
-                    <Link href={"/"} className="text-2xl text-primary-900 font-black ">
-                        پنل ادمین
-                    </Link>
+                   <DigiCodeLogoLg customeLabel="پنل ادمین"/>
                     <ButtonIcon variant="none" onClick={onClose} className={`lg:hidden`}>
                         <CloseIcon className="!w-6 !h-6 !text-secondary-900" />
                     </ButtonIcon>

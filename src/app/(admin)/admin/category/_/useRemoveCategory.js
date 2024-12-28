@@ -1,3 +1,5 @@
+import ToastError from "@/components/toasts/ToastError";
+import ToastSuccess from "@/components/toasts/ToastSuccess";
 import { removeCategoryApi } from "@/services/categoryService";
 import { useMutation } from "@tanstack/react-query";
 import { usePathname, useRouter } from "next/navigation";
@@ -10,11 +12,11 @@ export default function useRemoveCategory() {
   const { isPending: isRemoving, mutate: removeCategory } = useMutation({
     mutationFn: removeCategoryApi,
     onSuccess: (data) => {
-      toast.success(data.message);
+      ToastSuccess(data.message);
       router.replace(pathname, { scroll: false });
     },
     onError: (error) => {
-      toast.error(error?.response?.data?.message);
+      ToastError(error?.response?.data?.message);
     },
   });
 

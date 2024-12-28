@@ -15,7 +15,7 @@ export function DeleteButton({ id }) {
         removeComment(id = commentId, {
             onSuccess: () => {
                 setOpen(false);
-                router.push("/profile/comments", { scroll: false });
+                router.push("/admin/comments", { scroll: false });
             }
         })
     }
