@@ -14,6 +14,7 @@ import setCookieOnReq from "@/utils/setCookieOnReq";
 import PostComment from "./_components/PostComment";
 import AuthorPost from "./_components/AuthorPost";
 import TagsPost from "./_components/TagsPost";
+import EditAdmin from "./_components/EditAdmin";
 
 export async function generateMetadata({ params }) {
     const { slug } = await params;
@@ -120,6 +121,7 @@ async function SinglePost({ params }) {
 
 
                 <div className="col-span-12 xl:col-span-7 space-y-6">
+                    <EditAdmin postId={post._id}/>
                     <AuthorPost author={post.author} />
                     {post.tags.length > 0 && <TagsPost tags={post.tags} />}
                     {post.related.length > 0 && <RelatedPost posts={post.related} />}
