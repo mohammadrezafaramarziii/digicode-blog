@@ -1,0 +1,8 @@
+{
+    "app": "digicode",
+    "port": 3000,
+    "build":{
+        "location":"iran"
+    }
+  }
+  

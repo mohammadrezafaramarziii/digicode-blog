@@ -7,8 +7,8 @@ import { DigiCodeLogoLg, DigiCodeLogoSm } from "./DigiCodeLogo";
 export default function Header() {
     const { user, isLoading } = useAuth();
     return (
-        <div className="w-full flex items-center justify-between pt-7">
-            <DigiCodeLogoLg />
+        <div className="w-full flex items-center justify-between pt-7 whitespace-nowrap gap-2">
+            <DigiCodeLogoLg classNameText={"max-[360px]:text-lg"} classNameIcon={'max-[360px]:w-7 max-[360px]:w-7'}/>
             <div className={`${isLoading ? "blur-sm opacity-50" : ""} duration-150`}>
                 {!isLoading && !user ?
                     <>

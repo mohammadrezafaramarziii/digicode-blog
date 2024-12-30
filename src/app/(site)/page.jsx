@@ -38,10 +38,14 @@ export default async function Home() {
         </ul>
       </div>
 
-      <BanerSlider posts={posts} />
-      <NewestPosts posts={posts} />
-      <LatestPost post={posts[posts.length - 1]} />
-      <RandomPosts posts={posts} />
+      {posts.length > 0 &&
+        <>
+          <BanerSlider posts={posts} />
+          <NewestPosts posts={posts} />
+          <LatestPost post={posts[posts.length - 1]} />
+          <RandomPosts posts={posts} />
+        </>
+      }
       <PopularsCategory />
     </div>
   )

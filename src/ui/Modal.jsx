@@ -1,9 +1,10 @@
+"use client"
 import { createPortal } from "react-dom";
 import ButtonIcon from "./ButtonIcon";
 import { CloseIcon } from "./Icons";
 
 export default function Modal({ open, onClose, title, children }) {
-    return createPortal(
+    return (
         <>
             <div onClick={onClose} className={`${open ? "block" : "hidden"} w-full h-full bg-secondary-900/40 fixed top-0 right-0 z-50`}></div>
 
@@ -31,7 +32,6 @@ export default function Modal({ open, onClose, title, children }) {
                     </div>
                 </div>
             </div>
-        </>,
-        document.body
+        </>
     )
 }
