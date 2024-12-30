@@ -1,8 +1,9 @@
 "use client"
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { SearchLinearIcon } from "./Icons";
+import { Suspense } from "react";
 
-export default function Search({ inputClassName, btnClassName }) {
+function SearchInput({ inputClassName, btnClassName }) {
     const searchParams = useSearchParams();
     const router = useRouter();
     const pathname = usePathname();
@@ -39,5 +40,14 @@ export default function Search({ inputClassName, btnClassName }) {
                 </button>
             </div>
         </form>
+    )
+}
+
+
+export default function Search({ inputClassName, btnClassName }) {
+    return (
+        <Suspense>
+            <SearchInput btnClassName={btnClassName} inputClassName={inputClassName} />
+        </Suspense>
     )
 }

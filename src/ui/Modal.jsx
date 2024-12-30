@@ -2,9 +2,16 @@
 import { createPortal } from "react-dom";
 import ButtonIcon from "./ButtonIcon";
 import { CloseIcon } from "./Icons";
+import { useEffect, useState } from "react";
 
 export default function Modal({ open, onClose, title, children }) {
-    return (
+    const [mounted, setMounted] = useState(false);
+
+    useEffect(() => {
+        setMounted(true);
+    }, [])
+
+    return mounted && createPortal(
         <>
             <div onClick={onClose} className={`${open ? "block" : "hidden"} w-full h-full bg-secondary-900/40 fixed top-0 right-0 z-50`}></div>
 
@@ -32,6 +39,7 @@ export default function Modal({ open, onClose, title, children }) {
                     </div>
                 </div>
             </div>
-        </>
+        </>,
+        document.body
     )
 }
