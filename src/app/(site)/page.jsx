@@ -27,9 +27,7 @@ export default async function Home() {
         <ul className="text-sm text-secondary-900 flex items-center gap p-2 bg-background border border-secondary-900/10 rounded-md">
           {categories.slice(0, 5).map((category) => (
             <li className="px-3.5" key={category._id}>
-              <Link href={`/blogs/category/${category.slug}`}>
-                {category.title}
-              </Link>
+              {category.title}
             </li>
           ))}
           <Link href={'/blogs'} className="btn btn--primary">

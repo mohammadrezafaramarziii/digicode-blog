@@ -2,6 +2,8 @@ import { getCategories } from "@/services/categoryService";
 import { CategoryBoldDuotoneIcon } from "@/ui/Icons";
 import Link from "next/link";
 
+export const revalidate = 0;
+
 async function CategoryList() {
     const { categories } = await getCategories();
 
