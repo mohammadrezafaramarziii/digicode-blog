@@ -3,7 +3,7 @@ import { SortFromTopToBottomLineDuotoneIcon } from "@/ui/Icons";
 import Modal from "@/ui/Modal";
 import RadioInput from "@/ui/RadioInput";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { useCallback, useState } from "react";
+import { Suspense, useCallback, useState } from "react";
 
 
 const sortOptions = [
@@ -29,7 +29,8 @@ const sortOptions = [
     },
 ];
 
-export default function SortFilter() {
+
+function SortFilterComponent() {
     const searchParams = useSearchParams();
     const [open, setOpen] = useState(false);
     const [sort, setSort] = useState(searchParams.get("sort") || "latest");
@@ -93,5 +94,14 @@ export default function SortFilter() {
                 </Modal>
             </div>
         </>
+    )
+
+}
+
+export default function SortFilter() {
+    return (
+        <Suspense>
+            <SortFilterComponent />
+        </Suspense>
     )
 }
