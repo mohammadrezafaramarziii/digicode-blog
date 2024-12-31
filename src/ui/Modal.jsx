@@ -4,7 +4,7 @@ import ButtonIcon from "./ButtonIcon";
 import { CloseIcon } from "./Icons";
 import { useEffect, useState } from "react";
 
-export default function Modal({ open, onClose, title, children }) {
+export default function Modal({ open, onClose, title, children, className }) {
     const [mounted, setMounted] = useState(false);
 
     useEffect(() => {
@@ -13,9 +13,9 @@ export default function Modal({ open, onClose, title, children }) {
 
     return mounted && createPortal(
         <>
-            <div onClick={onClose} className={`${open ? "block" : "hidden"} w-full h-full bg-secondary-900/40 fixed top-0 right-0 z-50`}></div>
+            <div onClick={onClose} className={`${open ? "block" : "hidden"} ${className} w-full h-full bg-secondary-900/40 fixed top-0 right-0 z-50`}></div>
 
-            <div className={`${open ? "translate-y-0 lg:opacity-100 lg:visible" : "translate-y-full lg:opacity-0 lg:invisible"} duration-300 transition-all transform w-full lg:max-w-md fixed bottom-0 right-0 lg:top-1/2 lg:right-1/2 lg:bottom-auto lg:translate-x-1/2 lg:-translate-y-1/2 z-[60]`}>
+            <div className={`${open ? "translate-y-0 lg:opacity-100 lg:visible" : "translate-y-full lg:opacity-0 lg:invisible"} ${className} duration-300 transition-all transform w-full lg:max-w-md fixed bottom-0 right-0 lg:top-1/2 lg:right-1/2 lg:bottom-auto lg:translate-x-1/2 lg:-translate-y-1/2 z-[60]`}>
                 <div className="w-full bg-background p-4 rounded-t-xl lg:rounded-xl">
                     <div className="w-full flex justify-center">
                         <div onClick={onClose} className="w-9 h-1.5 inline-block lg:hidden bg-secondary-900/10 rounded-full"></div>

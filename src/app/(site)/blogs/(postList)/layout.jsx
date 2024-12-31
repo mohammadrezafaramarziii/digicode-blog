@@ -5,6 +5,7 @@ import Image from "next/image";
 import PostListLoading from "../_components/PostListLoading";
 import Search from "@/ui/Search";
 import CategoryListMobile from "../_components/CategoryListMobile";
+import SortFilter from "../_components/SortFilter";
 
 export const metadata = {
     title: "بلاگ ها",
@@ -19,6 +20,7 @@ function Layout({ children }) {
                 <Suspense fallback={<CategoryListLoading />}>
                     <CategoryList />
                 </Suspense>
+                <SortFilter />
             </div>
             <div className="w-full col-span-full lg:col-span-17 xl:col-span-18">
                 <div className="pb-8 pr-2 flex items-center gap-3">
@@ -34,8 +36,9 @@ function Layout({ children }) {
                 </div>
                 <div className="lg:hidden pb-6">
                     <Search />
-                    <div className="pt-3">
+                    <div className="pt-3 flex items-center gap-3">
                         <CategoryListMobile />
+                        <SortFilter />
                     </div>
                 </div>
                 <Suspense fallback={<PostListLoading />}>

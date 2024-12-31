@@ -29,7 +29,7 @@ export default function CategoryListMobile() {
                 <CategoryBoldDuotoneIcon className="w-5 h-5 text-secondary-800/50" />
                 فیلتر دسته بندی
             </button>
-            <Modal open={open} onClose={() => setOpen(false)} title="فیلتر دسته بندی">
+            <Modal open={open} onClose={() => setOpen(false)} title="فیلتر دسته بندی" className="lg:!hidden">
                 <ul className="flex flex-wrap gap-2 mt-4">
                     <li onClick={() => setOpen(false)} className="badge badge--primary">
                         <Link href={`/blogs`}>
