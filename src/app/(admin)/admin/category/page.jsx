@@ -1,3 +1,4 @@
+"use client"
 import Title from "@/app/(dashboard)/_components/Title";
 import { getCategories } from "@/services/categoryService";
 import Table from "@/ui/Table";
@@ -5,9 +6,12 @@ import CategoryRow from "./_/components/CategoryRow";
 import Link from "next/link";
 import Button from "@/ui/Button";
 import CategoryForm from "./_/components/CategoryForm";
+import useCategories from "@/hooks/useCategories";
 
-export default async function CategoryPage() {
-    const { categories } = await getCategories();
+export default function CategoryPage() {
+    const { rawCategories, isLoading } = useCategories();
+
+    if (isLoading && rawCategories && rawCategories.length > 0) return null
 
     return (
         <div>
@@ -25,7 +29,7 @@ export default async function CategoryPage() {
                         <th></th>
                     </Table.Header>
                     <Table.Body>
-                        {categories.map((category, index) => (
+                        {rawCategories.map((category, index) => (
                             <CategoryRow key={category._id} index={index} category={category} />
                         ))}
                     </Table.Body>

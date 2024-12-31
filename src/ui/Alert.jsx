@@ -14,6 +14,11 @@ export default function Alert({ children }) {
 
 export function AlertTimer({ children, open, onClose, onCancel, setReturned }) {
     const [time, setTime] = useState(10);
+    const [mounted, setMounted] = useState(false);
+
+    useEffect(() => {
+        setMounted(true);
+    }, [])
 
     useEffect(() => {
         const timer = time > 0 && open && setInterval(() => setTime(time - 1), 1000);
@@ -29,7 +34,7 @@ export function AlertTimer({ children, open, onClose, onCancel, setReturned }) {
         }
     }, [time, open])
 
-    return (
+    return mounted && (
         createPortal(
             <div className={`${open ? "translate-y-0 bottom-6 visible" : "translate-y-full bottom-0 invisible"} duration-300 ease-in-out w-60 h-14 bg-secondary-800 rounded-lg overflow-hidden fixed right-6 z-50 shadow-xl`}>
                 {open && <div className="w-full alert-time-animate__bar h-1 absolute bottom-0 right-0 bg-warning rounded-xl"></div>}
@@ -43,7 +48,7 @@ export function AlertTimer({ children, open, onClose, onCancel, setReturned }) {
                         </div>
                     </div>
                     <div>
-                        <Button onClick={()=>{
+                        <Button onClick={() => {
                             onCancel();
                             setTime(10);
                         }}>

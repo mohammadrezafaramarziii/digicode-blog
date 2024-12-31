@@ -19,5 +19,5 @@ export default function useCategories() {
     label: item.title,
   }));
 
-  return { isLoading, categories, transformedCategories };
+  return { isLoading, categories, transformedCategories, rawCategories };
 }
