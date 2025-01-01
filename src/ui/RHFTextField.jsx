@@ -1,3 +1,6 @@
+import ButtonIcon from "./ButtonIcon";
+import { EyeClosedOutlineIcon, EyeLinearIcon } from "./Icons";
+
 export default function RHFTextField({
   type = "text",
   label,
@@ -7,6 +10,9 @@ export default function RHFTextField({
   errors,
   isRequired,
   validationSchema = {},
+  isPass = false,
+  showPass,
+  setShowPass,
   ...rest
 }) {
   const errorMessages = errors?.[name];
@@ -31,6 +37,11 @@ export default function RHFTextField({
         {...register(name, validationSchema)}
         {...rest}
       />
+      {isPass &&
+        <ButtonIcon type="button" variant="none" onClick={setShowPass} className="absolute left-2 top-[34px]">
+          {showPass ? <EyeLinearIcon className="!w-5 !h-5 !text-secondary-800"/> : <EyeClosedOutlineIcon className="!w-5 !h-5 !text-secondary-800"/>}
+        </ButtonIcon>
+      }
       {errors && errors[name] && (
         <span className="text-red-600 block text-xs mt-1">
           {errors[name]?.message}

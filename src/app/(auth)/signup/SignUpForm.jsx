@@ -6,11 +6,12 @@ import * as Yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup"
 import { ScreenLoading } from "@/ui/DotSpinnerLoading";
 import { useAuth } from "@/context/AuthContext";
+import { useState } from "react";
 
 const schema = Yup.object({
     name: Yup.string().max(20, "نام و نام خانوادگی باید حداکثر 20 کارکتر باشد").required("نام و نام خانوادگی را وارد کنید"),
     email: Yup.string().email("ایمیل وارد شده نامعتبر است").required("ایمیل را وارد کنید"),
-    password: Yup.string().min(8, "حداقل 8 کارکتر را وارد کنید").required("رمز عبور را وارد کنید"),
+    password: Yup.string().min(8, "حداقل 8 کارکتر را وارد کنید").max(12, "حداکثر 12 کارکتر وارد کنید").required("رمز عبور را وارد کنید"),
 }).required();
 
 export default function SignUpForm() {
@@ -19,6 +20,7 @@ export default function SignUpForm() {
         mode: "onTouched"
     });
     const { signup } = useAuth();
+    const [showPass, setShowPass] = useState(false);
 
     const onSubmit = async (values) => {
         await signup(values);
@@ -54,8 +56,11 @@ export default function SignUpForm() {
                     label={'رمز عبور'}
                     name={'password'}
                     register={register}
-                    type="password"
+                    type={showPass ? "text" : "password"}
                     errors={errors}
+                    isPass={true}
+                    showPass={showPass}
+                    setShowPass={() => setShowPass(!showPass)}
                 />
                 <div className="pt-4">
                     <Button type="submit" className={'!w-full'}>

@@ -11,7 +11,7 @@ const nextConfig = {
   //   ],
   // },
   images: {
-    domains: ["api.digicodee.ir"],
+    domains: ["api.digicodee.ir", "localhost"],
   },
   logging: {
     fetches: {
