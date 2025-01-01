@@ -8,6 +8,8 @@ import { getPosts } from "@/services/postServices";
 import Button from "@/ui/Button";
 import Link from "next/link";
 
+export const revalidate = 0;
+
 export default async function Home() {
   const { categories } = await getCategories();
   const { posts } = await getPosts();
