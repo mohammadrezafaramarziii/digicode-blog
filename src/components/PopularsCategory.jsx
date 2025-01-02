@@ -42,7 +42,7 @@ async function CateItem({ category, index }) {
     // if (posts.length < 3) return null
 
     return (
-        <Link key={category._id} href={`/blogs/${category.slug}`} className={`badge ${categoryStyle[index]}`}>
+        <Link key={category._id} href={`/blogs/category/${category.slug}`} className={`badge ${categoryStyle[index]}`}>
             {category.title}
         </Link>
     )
