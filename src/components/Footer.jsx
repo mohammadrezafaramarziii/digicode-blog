@@ -34,7 +34,11 @@ export default function Footer() {
                                     پشتیبانی
                                 </Link>
                             </li>
-                            
+                            <li>
+                                <Link href={'/about-us'}>
+                                    درباره ما
+                                </Link>
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -76,7 +80,7 @@ export default function Footer() {
                 </div>
             </div>
             <div className="w-full text-white text-center flex justify-center p-4 bg-primary-900 text-sm font-medium">
-                © کلیه حقوق مادی و معنوی سایت متعلق به این دیجی کد می باشد.
+                © کلیه حقوق مادی و معنوی سایت متعلق به دیجی کد می باشد.
             </div>
         </div>
     )

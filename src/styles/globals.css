@@ -117,7 +117,7 @@ input[type="number"] {
   -moz-appearance: textfield; /* Firefox */
 }
 
-.rti--container{
+.rti--container {
   @apply !px-4 !min-h-11 !text-secondary-900 !rounded-md !bg-primary-800 !border !border-primary-800 !duration-150 !outline-none !appearance-none focus:!border-primary-900;
 }
 
@@ -127,11 +127,11 @@ input[type="number"] {
 }
 
 *::-webkit-scrollbar-track {
-  background: rgba(var(--color-secondary-900),0.1);
+  background: rgba(var(--color-secondary-900), 0.1);
 }
 
 *::-webkit-scrollbar-thumb {
-  background: rgba(var(--color-primary-900),0.2);
+  background: rgba(var(--color-primary-900), 0.2);
   border-radius: 3px;
 }
 
@@ -261,8 +261,7 @@ input[type="number"] {
 }
 
 .alert-time-animate__bar {
-  animation: alert-time-animate__bar__animation 13s
-    forwards;
+  animation: alert-time-animate__bar__animation 13s forwards;
 }
 
 @keyframes alert-time-animate__bar__animation {
@@ -275,11 +274,13 @@ input[type="number"] {
 }
 
 @keyframes ping {
-  75%, 100% {
-      transform: scale(2);
-      opacity: 0;
+  75%,
+  100% {
+    transform: scale(2);
+    opacity: 0;
   }
 }
 .support-animate-ping {
   animation: ping 1.5s cubic-bezier(0, 0, 0.2, 1) infinite;
 }
+

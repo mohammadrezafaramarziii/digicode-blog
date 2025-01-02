@@ -76,9 +76,8 @@ async function SinglePost({ params }) {
                             </div>
                         </div>
 
-                        <p className="md:text-lg text-secondary-800 font-medium pb-6 whitespace-pre-wrap">
-                            {post.text}
-                        </p>
+                        <div dangerouslySetInnerHTML={{ __html: post.text }} className="pb-6 prose max-w-full prose-headings:text-secondary-900 prose-p:text-secondary-900" />
+
 
                         <div className="bg-primary-800 w-full rounded-md p-4 flex flex-col gap-3 items-center justify-center sm:flex-row sm:justify-between">
                             <span className="text-sm text-secondary-700">
@@ -121,7 +120,7 @@ async function SinglePost({ params }) {
 
 
                 <div className="col-span-12 xl:col-span-7 space-y-6">
-                    <EditAdmin postId={post._id}/>
+                    <EditAdmin postId={post._id} />
                     <AuthorPost author={post.author} />
                     {post.tags.length > 0 && <TagsPost tags={post.tags} />}
                     {post.related.length > 0 && <RelatedPost posts={post.related} />}

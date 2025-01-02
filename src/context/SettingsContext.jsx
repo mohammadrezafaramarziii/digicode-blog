@@ -1,6 +1,8 @@
 "use client"
 import { createContext, useContext, useEffect, useReducer, useState } from "react";
 import { useAuth } from "./AuthContext";
+import { ScreenLoading } from "@/ui/DotSpinnerLoading";
+import { usePathname } from "next/navigation";
 
 const SettingsContext = createContext();
 
@@ -9,6 +11,8 @@ const initialState = { darkMode: false, colorTheme: "68, 75, 255" };
 export function SettingsProvider({ children }) {
     const { user } = useAuth();
     const [settings, setSettings] = useState(initialState);
+    const [isLoading, setIsLoading] = useState(true);
+    const pathname = usePathname();
 
     const toggleDarkMode = (state) => {
         setSettings((prev) => ({ ...prev, darkMode: state }));
@@ -23,6 +27,8 @@ export function SettingsProvider({ children }) {
             const getSettings = localStorage.getItem("settings");
             setSettings((prev) => (getSettings ? JSON.parse(getSettings) : initialState));
         }
+
+        setIsLoading(false);
     }, [user]);
 
     useEffect(() => {
@@ -38,6 +44,10 @@ export function SettingsProvider({ children }) {
             localStorage.setItem("settings", JSON.stringify(settings));
         }
     }, [settings, user]);
+
+    if (isLoading && !pathname.startsWith("/admin") && !pathname.startsWith("/profile")) {
+        return <ScreenLoading />
+    }
 
     return (
         <SettingsContext.Provider

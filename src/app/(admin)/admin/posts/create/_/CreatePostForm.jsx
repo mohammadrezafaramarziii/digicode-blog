@@ -21,6 +21,7 @@ import { imageUrlToFile } from "@/utils/fileFormatter";
 import useMoveBack from "@/hooks/useMoveBack";
 import { TagsInput } from "react-tag-input-component";
 import RelatedPostsSelect from "./RelatedPostsSelect";
+import TextEditor from "@/ui/TextEditor";
 
 const schema = Yup
     .object({
@@ -32,10 +33,10 @@ const schema = Yup
             .string()
             .min(5, "حداقل ۱۰ کاراکتر را وارد کنید")
             .required("توضیحات را وارد کنید"),
-        text: Yup
-            .string()
-            .min(5, "حداقل ۱۰ کاراکتر را وارد کنید")
-            .required("توضیحات ضروری است"),
+        // text: Yup
+        //     .string()
+        //     .min(5, "حداقل ۱۰ کاراکتر را وارد کنید")
+        //     .required("توضیحات ضروری است"),
         slug: Yup.string().required("اسلاگ را وارد کنید"),
         readingTime: Yup
             .number()
@@ -48,14 +49,13 @@ const schema = Yup
     .required();
 
 export default function CreatePostForm({ postToEdit = {} }) {
-    const { _id: editId, title, text, related: prevRelated, tags: prevTags, slug, briefText, coverImageUrl: prevCoverImageUrl, coverImage, category, readingTime } = postToEdit;
+    const { _id: editId, title, text: oldText, related: prevRelated, tags: prevTags, slug, briefText, coverImageUrl: prevCoverImageUrl, coverImage, category, readingTime } = postToEdit;
     const isEditSession = Boolean(editId);
 
     let editValues = {};
     if (isEditSession) {
         editValues = {
             title,
-            text,
             slug,
             briefText,
             coverImage,
@@ -68,6 +68,7 @@ export default function CreatePostForm({ postToEdit = {} }) {
     const [coverImageUrl, setCoverImageUrl] = useState(prevCoverImageUrl || null);
     const [tags, setTags] = useState(prevTags || []);
     const trasnformPosts = isEditSession && prevRelated.map((post) => ({ value: post._id, label: post.title }));
+    const [text, setText] = useState(oldText || "");
 
     const [relatedPosts, setRelatedPosts] = useState(trasnformPosts || []);
     const { createPost, isCreating } = useCreatePost();
@@ -89,7 +90,6 @@ export default function CreatePostForm({ postToEdit = {} }) {
         defaultValues: editValues
     });
 
-
     useEffect(() => {
         async function fetchMyApi() {
             const file = await imageUrlToFile(prevCoverImageUrl);
@@ -108,6 +108,7 @@ export default function CreatePostForm({ postToEdit = {} }) {
         }
 
         formData.append("tags", JSON.stringify(tags));
+        formData.append("text", text);
 
         const transformRelatedPosts = relatedPosts.map((post) => (post.value));
         formData.append("related", JSON.stringify(transformRelatedPosts));
@@ -252,7 +253,7 @@ export default function CreatePostForm({ postToEdit = {} }) {
 
                     <RelatedPostsSelect value={relatedPosts} onChange={setRelatedPosts} />
 
-                    <div className="md:col-span-2">
+                    {/* <div className="md:col-span-2">
                         <RHFTextArea
                             label={'متن'}
                             errors={errors}
@@ -260,9 +261,15 @@ export default function CreatePostForm({ postToEdit = {} }) {
                             name={'text'}
                             isRequired
                         />
-                    </div>
+
+                    </div> */}
                 </div>
             </div>
+
+            <TextEditor
+                value={text}
+                onEditorChange={(t) => setText(t)}
+            />
 
             <div className="absolute left-0 -top-4 flex items-center gap-3">
                 <Button onClick={moveBack} type="button" varint="danger">

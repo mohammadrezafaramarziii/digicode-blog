@@ -1,0 +1,29 @@
+
+.tox .tox-menubar{
+    font-family: var(--font-yekan-bakh) !important;
+    font-weight: 500 !important;
+}
+
+.tox .tox-menubar *{
+    font-weight: 500 !important;
+}
+
+.tox .tox-menu.tox-collection.tox-collection--list *{
+    font-family: var(--font-yekan-bakh) !important;
+    font-weight: 500 !important;
+}
+
+
+.tox .tox-toolbar__group *{
+    font-family: var(--font-yekan-bakh) !important;
+    font-weight: 500 !important;
+}
+
+.tox .tox-dialog *{
+    font-family: var(--font-yekan-bakh) !important;
+    font-weight: 500 !important;
+}
+
+.tox-tinymce{
+    border: 0px !important;
+}

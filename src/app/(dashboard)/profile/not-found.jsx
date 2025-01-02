@@ -14,9 +14,9 @@ export default function NotFound() {
                 صفحه ای که دنبال آن بودید وجود ندارد!
             </h1>
             <div className="pt-4">
-                <Link href={'/'}>
+                <Link href={'/profile'}>
                     <Button>
-                        رفتن به صفحه اصلی
+                        رفتن به داشبورد
                     </Button>
                 </Link>
             </div>
