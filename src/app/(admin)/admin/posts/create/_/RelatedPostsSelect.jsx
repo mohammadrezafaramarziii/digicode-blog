@@ -11,7 +11,7 @@ export default function RelatedPostsSelect({ value, onChange }) {
         async function fetchPosts() {
             try {
                 const { posts: postsData } = await getPosts("limit=100");
-                const trasnformPosts = postsData && postsData.map((post) => ({ value: post._id, label: post.title }));
+                const trasnformPosts = postsData && postsData.map((post) => ({ value: post._id, label: `${post.title}(${post.category.title})` }));                
                 setPosts(trasnformPosts);
             } catch (error) {
                 setPosts([]);
