@@ -37,9 +37,9 @@ export default async function PopularsCategory() {
 }
 
 async function CateItem({ category, index }) {
-    const { posts } = await getPosts(`&categorySlug=${category.englishTitle}`);
+    // const { posts } = await getPosts(`&categorySlug=${category.englishTitle}`);
 
-    if (posts.length < 3) return null
+    // if (posts.length < 3) return null
 
     return (
         <Link key={category._id} href={`/blogs/${category.slug}`} className={`badge ${categoryStyle[index]}`}>

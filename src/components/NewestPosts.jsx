@@ -1,9 +1,14 @@
 import CoverImage from "@/app/(site)/blogs/_components/CoverImage";
+import { getPosts } from "@/services/postServices";
 import Avatar from "@/ui/Avatar";
 import Button from "@/ui/Button";
 import Link from "next/link";
 
-export default function NewestPosts({ posts }) {
+export const revalidate = 0;
+
+export default async function NewestPosts() {
+    const { posts } = await getPosts("sort=popular");
+
     return (
         <div className="pt-16 max-w-screen-lg mx-auto">
             <div className="w-full flex flex-col sm:flex-row items-center justify-between gap-4">
@@ -11,7 +16,7 @@ export default function NewestPosts({ posts }) {
 
                 </div>
                 <h4 className="text-2xl font-bold text-primary-900 sm:pr-[110px]">
-                    جدیدترین مقالات
+                    محبوبترین مقالات
                 </h4>
                 <Link href={'/blogs'}>
                     <Button varint="secondary">
@@ -24,7 +29,7 @@ export default function NewestPosts({ posts }) {
                 {posts.slice(0, 3).map((post) => (
                     <div key={post._id} className="w-full flex flex-col">
                         <Link href={`/blogs/${post.slug}`} className="block">
-                            <CoverImage {...post} className="!rounded-2xl"/>
+                            <CoverImage {...post} className="!rounded-2xl" />
                         </Link>
 
                         {/* post content */}

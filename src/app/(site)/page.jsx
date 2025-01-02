@@ -54,7 +54,7 @@ export default async function Home() {
       {posts.length > 0 &&
         <>
           <BanerSlider posts={posts} />
-          <NewestPosts posts={posts} />
+          <NewestPosts />
           <LatestPost post={posts[posts.length - 1]} />
           <RandomPosts posts={posts} />
         </>
