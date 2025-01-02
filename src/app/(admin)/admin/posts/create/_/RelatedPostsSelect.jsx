@@ -5,6 +5,7 @@ import Select from 'react-select';
 
 export default function RelatedPostsSelect({ value, onChange }) {
     const [posts, setPosts] = useState([]);
+    const [mount, setMount] = useState(false);
 
     useEffect(() => {
         async function fetchPosts() {
@@ -18,19 +19,22 @@ export default function RelatedPostsSelect({ value, onChange }) {
         }
 
         fetchPosts();
+        setMount(true);
     }, [])
 
-    return (
-        <div className="textField relative">
-            <label htmlFor={"tags"} className="text-secondary-800 text-sm block pr-2">
-                مقالات مرتبط
-            </label>
-            <Select
-                value={value}
-                onChange={onChange}
-                isMulti
-                options={posts || []}
-            />
-        </div>
-    )
+    if (mount) {
+        return (
+            <div className="textField relative z-10">
+                <label htmlFor={"tags"} className="text-secondary-800 text-sm block pr-2">
+                    مقالات مرتبط
+                </label>
+                <Select
+                    value={value}
+                    onChange={onChange}
+                    isMulti
+                    options={posts}
+                />
+            </div>
+        )
+    }
 }

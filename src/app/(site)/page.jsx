@@ -25,6 +25,19 @@ export default async function Home() {
         </p>
       </div>
 
+      <div className="flex items-center gap-4 justify-center pt-4">
+        <Link href={'/signup'}>
+          <Button className="!text-base md:!text-lg">
+            ثبت نام
+          </Button>
+        </Link>
+        <Link href={'/about-us'}>
+          <Button varint="secondary" className="!text-base md:!text-lg">
+            درباره ما
+          </Button>
+        </Link>
+      </div>
+
       <div className="hidden w-auto md:flex justify-center mt-8">
         <ul className="text-sm text-secondary-900 flex items-center gap p-2 bg-background border border-secondary-900/10 rounded-md">
           {categories.slice(0, 5).map((category) => (
