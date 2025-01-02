@@ -11,7 +11,7 @@ export default function LatestPost({ post }) {
                     </Link>
                 </div>
                 <div>
-                    <Link href={`/blogs/${post.slug}`}>
+                    <Link href={`/blogs/category/${post.slug}`}>
                         <h2 className="text-start text-secondary-900 text-2xl line-clamp-1 font-bold mb-1 hover:text-primary-900 duration-100">
                             {post.title}
                         </h2>

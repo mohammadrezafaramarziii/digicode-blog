@@ -65,7 +65,7 @@ async function SinglePost({ params }) {
                         </h1>
 
                         <div className="pb-7 flex items-center gap-7">
-                            <Link href={`/blogs/${post.category.slug}`} className="badge badge--warning !text-base">
+                            <Link href={`/blogs/category/${post.category.slug}`} className="badge badge--warning !text-base">
                                 {post.category.title}
                             </Link>
                             <div className="flex items-center gap-1 text-primary-900 text-sm font-medium">

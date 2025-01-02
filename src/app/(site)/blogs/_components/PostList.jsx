@@ -41,7 +41,7 @@ async function PostList({ posts, totalPages }) {
                                         </div>
                                     </div>
                                     <div>
-                                        <Link href={`/blogs/${post.category.slug}`} className="badge badge--deep-red !text-xs">
+                                        <Link href={`/blogs/category/${post.category.slug}`} className="badge badge--deep-red !text-xs">
                                             {post.category.title}
                                         </Link>
                                     </div>

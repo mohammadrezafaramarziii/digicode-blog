@@ -18,7 +18,7 @@ export default function RandomPosts({ posts }) {
                         <div className="w-full flex-1 flex flex-col justify-between pt-4">
                             <div className="flex flex-col items-start">
                                 <div className="mb-4">
-                                    <Link href={`/blogs/${post.category.slug}`} className="badge badge--deep-red !text-xs">
+                                    <Link href={`/blogs/category/${post.category.slug}`} className="badge badge--deep-red !text-xs">
                                         {post.category.title}
                                     </Link>
                                 </div>
