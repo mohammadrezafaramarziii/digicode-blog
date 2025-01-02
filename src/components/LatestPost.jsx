@@ -16,9 +16,8 @@ export default function LatestPost({ post }) {
                             {post.title}
                         </h2>
                     </Link>
-                    <p className="text-start mb-[18px] text-secondary-700 line-clamp-5">
-                        {post.text}
-                    </p>
+                    <div dangerouslySetInnerHTML={{ __html: post.text }} className="text-start mb-[18px] text-secondary-700 line-clamp-5">
+                    </div>
                 </div>
             </div>
 
