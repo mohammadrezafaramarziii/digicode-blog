@@ -52,7 +52,7 @@
   }
 
   .badge {
-    @apply py-1.5 px-2 rounded-md inline-block w-auto;
+    @apply py-1.5 px-2 rounded-md inline-block w-auto whitespace-nowrap;
   }
   .badge--primary {
     @apply bg-primary-900/10 text-primary-900 text-sm font-medium;
