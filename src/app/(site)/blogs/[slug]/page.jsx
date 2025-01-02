@@ -97,8 +97,8 @@ async function SinglePost({ params }) {
                                     </span>
                                 </div>
 
-                                <div className="flex items-center gap-2">
-                                    {post.tags.map((tag, index) => (
+                                <div className="flex items-center flex-wrap gap-2">
+                                    {post.tags.slice(0, 5).map((tag, index) => (
                                         <div key={index} className="badge badge--primary">
                                             #{tag}
                                         </div>
