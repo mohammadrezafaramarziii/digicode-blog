@@ -79,15 +79,13 @@ async function SinglePost({ params }) {
                         <div dangerouslySetInnerHTML={{ __html: post.text }} className="pb-6 prose max-w-full prose-headings:text-secondary-900 prose-p:text-secondary-900" />
 
 
-                        <div className="bg-primary-800 w-full rounded-md p-4 flex flex-col gap-3 items-center justify-center sm:flex-row sm:justify-between">
-                            <span className="text-sm text-secondary-700">
-                                به این پست چه امتیازی می دهید؟
-                            </span>
-                            <div className="flex items-center gap-px">
-                                {Array(5).fill({}).map((item, index) => (
-                                    <StarBoldIcon key={index} className="text-yellow-500 w-4 h-4" />
-                                ))}
+                        <div className="bg-primary-800 w-full rounded-md p-4 flex gap-2 items-start">
+                            <div>
+                                <StarBoldIcon className="text-yellow-500 w-4 h-4" />
                             </div>
+                            <span className="text-sm text-secondary-700">
+                                اگر نظری درباره موضوعات مقاله دارید یا پیشنهادی برای مقالات بعدی دارید، لطفاً آن را در کامنت‌ها یا در پشتیبانی با ما به اشتراک بگذارید. منتظر نظرات شما هستیم!
+                            </span>
                         </div>
 
                         <div className="w-full pt-4 mt-4 border-t border-t-secondary-700/20">
