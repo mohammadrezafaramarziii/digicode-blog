@@ -19,9 +19,9 @@ export default function Comment({ comment }) {
     return (
         <>
             <div className={`w-full bg-background flex flex-col rounded-lg p4 relative transform duration-300`}>
-                <div className="flex-1 p-4 flex flex-col justify-between">
+                <div className="flex-1 p-4">
                     <div className="w-full">
-                        <div className="text-secondary-900 font-bold">
+                        <div className="text-secondary-900 font-bold w-full whitespace-pre-wrap break-all">
                             {comment.content.text}
                         </div>
                         {!comment.openToComment &&
@@ -29,7 +29,7 @@ export default function Comment({ comment }) {
                                 <div className="text-xs text-secondary-800">
                                     در پاسخ به {comment.parentComment.name}
                                 </div>
-                                <p className="text-sm font-medium text-secondary-900">
+                                <p className="text-sm font-medium text-secondary-900 whitespace-pre-wrap break-all">
                                     متن نظر: {comment.parentComment.text}
                                 </p>
                             </div>

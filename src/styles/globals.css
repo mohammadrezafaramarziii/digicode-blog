@@ -215,7 +215,7 @@ input[type="number"] {
 .post-comment .post-comment__answer::before {
   content: "";
   width: 3px;
-  height: calc(100% - 44px);
+  height: 100px;
   background-color: rgb(var(--color-pink));
   position: absolute;
   top: -24px;
@@ -228,7 +228,7 @@ input[type="number"] {
   height: 3px;
   background-color: rgb(var(--color-pink));
   position: absolute;
-  top: calc(70% - 24px);
+  top:75px;
   right: -24px;
 }
 

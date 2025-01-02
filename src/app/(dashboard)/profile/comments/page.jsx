@@ -7,8 +7,6 @@ export default async function CommentsPage() {
     const { comments } = await getAllCommentsApi();
 
     return (
-        <div>
-            <CommentList comments={comments} />
-        </div>
+        <CommentList comments={comments} />
     )
 }

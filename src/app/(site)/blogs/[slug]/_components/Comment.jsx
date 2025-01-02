@@ -34,7 +34,7 @@ export default function Comment({ comment, isAuth, onAddComment }) {
                 </div>
             </div>
 
-            <p className="text-sm font-bold text-secondary-800">
+            <p className="text-sm font-bold text-secondary-800 whitespace-pre-wrap break-all">
                 {comment.content.text}
             </p>
         </div>
