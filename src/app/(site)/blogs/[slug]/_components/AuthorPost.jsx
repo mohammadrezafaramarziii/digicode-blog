@@ -2,8 +2,6 @@
 import Avatar from "@/ui/Avatar";
 
 export default function AuthorPost({ author }) {
-    console.log(author);
-    
     return (
         <div className="w-full bg-primary-800 p-6 rounded-xl">
             <div className="flex items-center gap-2">
