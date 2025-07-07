@@ -16,16 +16,59 @@ import AuthorPost from "./_components/AuthorPost";
 import TagsPost from "./_components/TagsPost";
 import EditAdmin from "./_components/EditAdmin";
 
+
 export async function generateMetadata({ params }) {
-    const { slug } = await params;
+    const { slug } = params;
     const post = await getPostBySlug(slug);
 
     if (!post) return notFound();
 
+    const url = `https://digicodee.ir/blogs/${post.slug}`;
+    const imageUrl = post.coverImageUrl || 'https://digicodee.ir/images/og-image.jpg';
+
     return {
-        title: post.title
-    }
+        title: post.title,
+        description: post.briefText || 'مطالب جذاب و کاربردی برنامه‌نویسی در دیجی کد',
+        keywords: post.tags || ['برنامه نویسی', 'فرانت‌اند', 'ری‌اکت', 'Next.js'],
+        metadataBase: new URL('https://digicodee.ir'),
+        alternates: {
+            canonical: url,
+        },
+        openGraph: {
+            title: post.title,
+            description: post.briefText,
+            url,
+            siteName: 'دیجی کد',
+            locale: 'fa_IR',
+            type: 'article',
+            images: [
+                {
+                    url: imageUrl,
+                    width: 1200,
+                    height: 630,
+                    alt: post.title,
+                },
+            ],
+        },
+        twitter: {
+            card: 'summary_large_image',
+            title: post.title,
+            description: post.briefText,
+            images: [imageUrl],
+        },
+        authors: [
+            { name: 'محمدرضا فرامرزی', url: 'https://mrfaramarzi.ir' },
+        ],
+        creator: 'محمدرضا فرامرزی',
+        publisher: 'دیجی کد',
+        category: 'Technology',
+        robots: {
+            index: true,
+            follow: true,
+        },
+    };
 }
+
 
 export async function generateStaticParams() {
     const { posts } = await getPosts();

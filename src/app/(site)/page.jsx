@@ -13,7 +13,7 @@ export const revalidate = 0;
 export default async function Home() {
   const { categories } = await getCategories();
   const { posts } = await getPosts();
-
+  
   return (
     <div className="w-full my-20 text-center">
       <div>

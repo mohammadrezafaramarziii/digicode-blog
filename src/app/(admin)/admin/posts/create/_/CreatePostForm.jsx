@@ -69,6 +69,7 @@ export default function CreatePostForm({ postToEdit = {} }) {
     const [tags, setTags] = useState(prevTags || []);
     const trasnformPosts = isEditSession && prevRelated.map((post) => ({ value: post._id, label: post.title }));
     const [text, setText] = useState(oldText || "");
+    const [isChangeCover, setIsChangeCover] = useState(false);
 
     const [relatedPosts, setRelatedPosts] = useState(trasnformPosts || []);
     const { createPost, isCreating } = useCreatePost();
@@ -103,8 +104,9 @@ export default function CreatePostForm({ postToEdit = {} }) {
 
     const onSubmit = (data) => {
         const formData = new FormData();
-        for (const key in data) {
-            formData.append(key, data[key]);
+        const { coverImage, ...rest } = data;
+        for (const key in rest) {
+            formData.append(key, rest[key]);
         }
 
         formData.append("tags", JSON.stringify(tags));
@@ -115,6 +117,9 @@ export default function CreatePostForm({ postToEdit = {} }) {
 
 
         if (isEditSession) {
+            if (isChangeCover) {
+                formData.append("coverImage", coverImage);
+            }
             updatePost({ id: editId, data: formData }, {
                 onSuccess: () => {
                     reset();
@@ -122,6 +127,7 @@ export default function CreatePostForm({ postToEdit = {} }) {
                 }
             })
         } else {
+            formData.append("coverImage", coverImage);
             createPost(formData, {
                 onSuccess: () => {
                     router.replace("/admin/posts");
@@ -187,6 +193,7 @@ export default function CreatePostForm({ postToEdit = {} }) {
                                     const file = e.target.files[0];
                                     onChange(file);
                                     setCoverImageUrl(URL.createObjectURL(file));
+                                    setIsChangeCover(true);
                                     e.target.files = null;
                                 }}
                             />

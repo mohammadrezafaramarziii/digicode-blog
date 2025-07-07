@@ -27,6 +27,7 @@ export default function Me() {
     const [avatarUrl, setAavatarUrl] = useState();
     const { mutateAsync: mutateUploadAvatar, isPending: isUploading } = useMutation({ mutationFn: uploadAvatar });
     const { mutateAsync: mutateUpdate, isPending: isUpdating } = useMutation({ mutationFn: updateProfile });
+    const [isChangeAvatar, setIsChangeAvatar] = useState(false);
 
     const {
         register,
@@ -50,7 +51,10 @@ export default function Me() {
             const { message } = await mutateUpdate({ name: values.name, email: values.email });
             if (message) {
                 try {
-                    const res = await mutateUploadAvatar(formData);
+                    if (isChangeAvatar) {
+                        const res = await mutateUploadAvatar(formData);
+                        setIsChangeAvatar(false);
+                    }
                     await getUser();
                     ToastSuccess(message);
                 } catch (error) { }
@@ -102,6 +106,7 @@ export default function Me() {
                                         const file = e.target.files[0];
                                         onChange(file);
                                         setAavatarUrl(URL.createObjectURL(file));
+                                        setIsChangeAvatar(true);
                                         e.target.files = null;
                                     }}
                                 />
