@@ -2,6 +2,8 @@ import CoverImage from "@/app/(site)/blogs/_components/CoverImage";
 import { getPosts } from "@/services/postServices";
 import Link from "next/link";
 
+export const revalidate = 0;
+
 export default async function LatestPost() {
     const { posts } = await getPosts("sort=latest");
     const post = posts[0];

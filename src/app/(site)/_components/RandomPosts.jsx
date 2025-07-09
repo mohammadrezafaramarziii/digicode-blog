@@ -3,6 +3,8 @@ import { getPosts } from "@/services/postServices";
 import Avatar from "@/ui/Avatar";
 import Link from "next/link";
 
+export const revalidate = 0;
+
 export default async function RandomPosts() {
     const { posts } = await getPosts();
     const shuffled = [...posts].sort(() => Math.random() - 0.5);

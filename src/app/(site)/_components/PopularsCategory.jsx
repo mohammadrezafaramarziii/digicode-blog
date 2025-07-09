@@ -10,6 +10,7 @@ const categoryStyle = {
     5: "badge--primary",
     6: "badge--danger",
 }
+export const revalidate = 0;
 
 export default async function PopularsCategory() {
     const { categories } = await getCategories();
