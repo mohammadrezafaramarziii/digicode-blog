@@ -1,6 +1,6 @@
 export function ScreenLoading({message}) {
     return (
-        <div className="w-full h-full flex flex-col gap-6 items-center justify-center bg-primary-800/20 backdrop-blur-sm fixed top-0 right-0 z-50">
+        <div className="w-full h-full flex flex-col gap-6 items-center justify-center bg-primary-800/30 backdrop-blur-lg fixed top-0 right-0 z-50">
             <div
                 style={{
                     "--size": "64px",

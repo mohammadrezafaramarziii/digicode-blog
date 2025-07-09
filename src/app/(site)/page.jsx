@@ -1,19 +1,15 @@
-import BanerSlider from "@/components/BanerSlider";
-import LatestPost from "@/components/LatestPost";
-import NewestPosts from "@/components/NewestPosts";
-import PopularsCategory from "@/components/PopularsCategory";
-import RandomPosts from "@/components/RandomPosts";
-import { getCategories } from "@/services/categoryService";
-import { getPosts } from "@/services/postServices";
 import Button from "@/ui/Button";
 import Link from "next/link";
+import HomePosts from "./_components/HomePosts";
+import { Suspense } from "react";
+import HeroCategories from "./_components/HeroCategories";
+import SkeletonLoading from "@/ui/SkeletonLoading";
+import PopularsCategory from "@/app/(site)/_components/PopularsCategory";
+import { CategoryBoldDuotoneIcon } from "@/ui/Icons";
+import PopularCategorySkeleton from "./_components/PopularCategorySkeleton";
 
-export const revalidate = 0;
 
 export default async function Home() {
-  const { categories } = await getCategories();
-  const { posts } = await getPosts();
-  
   return (
     <div className="w-full my-20 text-center">
       <div>
@@ -39,27 +35,33 @@ export default async function Home() {
       </div>
 
       <div className="hidden w-auto md:flex justify-center mt-8">
-        <ul className="text-sm text-secondary-900 flex items-center gap p-2 bg-background border border-secondary-900/10 rounded-md">
-          {categories.slice(0, 5).map((category) => (
-            <li className="px-3.5" key={category._id}>
-              {category.title}
-            </li>
-          ))}
-          <Link href={'/blogs'} className="btn btn--primary">
-            مشاهده همه
-          </Link>
-        </ul>
+        <Suspense
+          fallback={
+            <SkeletonLoading containerClassName="!block !w-[532px] !h-14" className="!rounded-md !w-full !h-full" />
+          }
+        >
+          <HeroCategories />
+        </Suspense>
       </div>
 
-      {posts.length > 0 &&
-        <>
-          <BanerSlider posts={posts} />
-          <NewestPosts />
-          <LatestPost post={posts[posts.length - 1]} />
-          <RandomPosts posts={posts} />
-        </>
-      }
-      <PopularsCategory />
+      <HomePosts />
+
+      <div className="pt-16 max-w-screen-lg mx-auto">
+        <div className="w-full border-t-2 border-t-secondary-900/10 pt-14">
+          <div className="w-full flex items-center justify-center gap-4">
+            <CategoryBoldDuotoneIcon className="w-7 h-7 text-secondary-900/40" />
+            <h4 className="text-2xl font-black text-secondary-900">
+              پربازدید ترین دسته بندی ها
+            </h4>
+          </div>
+
+          <div className="w-full max-w-md mx-auto flex items-center justify-center flex-wrap gap-4 mt-8">
+            <Suspense fallback={<PopularCategorySkeleton />}>
+              <PopularsCategory />
+            </Suspense>
+          </div>
+        </div>
+      </div>
     </div>
   )
 }
